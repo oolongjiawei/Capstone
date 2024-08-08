@@ -52,10 +52,10 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 
 ### Mockups
 #### Register Page
-![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/login.jpeg)
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/register.jpeg)
 
 #### Login Page
-![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/register.jpeg)
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/login.jpeg)
 
 #### Home Page/ Personal Page 
 ![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/home.jpeg)
