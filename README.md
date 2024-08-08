@@ -164,7 +164,8 @@ update readme.md
 
 ## Nice+to+haves
 
-- create an real time chat board to talk to the fortune teller (socket.io)
+- Real time chat:
+Offer an online chat window service (scoket.io) to talk to the fortune teller, help you solve specific problem.
 
 - Enhanced Suggestions: 
 Provide more detailed suggestions split by season.
@@ -178,15 +179,13 @@ Calculate and display the percentage of each element in the user's chart.
 - daily lucky cookie
 
 - UI toggle button:
-Display different UI states for day and night, or give it a toggle button.
+Display different UI states for day and night, and give it a toggle button.
 
 - Google Calendar API update to integrate fortune reminders 
 
 - Integration with social media for sharing fortunes
 
-- offer online chat window service (scoket.io)
-
-- show which celebrity share s birthday with u?
+- show which celebrity share same birthday with u?
 
 
 
