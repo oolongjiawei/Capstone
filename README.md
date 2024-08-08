@@ -56,7 +56,7 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 
 #### Login Page
 ![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/login.jpeg)
-####* Sorry, this img suppost to be the Login page
+#### * Sorry, this img suppost to be the Login page
 
 #### Home Page/ Personal Page 
 ![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/home.jpeg)
