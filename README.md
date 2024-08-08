@@ -6,20 +6,20 @@ a website designed to help users gain insights into themselves through detailed 
 
 
 ### Problem
-In today's fast+paced world, people seek quick, accessible ways to gain personal insights and guidance. Traditional fortune+telling methods are often time+consuming or geographically limited. Fortune+Tellers addresses this by offering immediate, personalized insights into various life aspects, including relationships, career, and personal growth, through a digital platform accessible anytime, anywhere.
+In today's fast+paced world, people seek quick, accessible ways to gain personal insights and guidance. Traditional fortune-telling methods are often time-consuming or geographically limited. Fortune House addresses this by offering immediate, personalized insights into various life aspects, including relationships, career, and personal growth, through a digital platform accessible anytime, anywhere.
 
 
 ### User Profile
 + Individuals interested in self+reflection and personal growth
 + Users seeking guidance on life decisions
-+ People curious about Eastern philosophy and fortune+telling methods
++ People curious about Eastern philosophy and fortune-telling methods
 
 
 ### Features
-+ Personalized fortune+telling based on birth date, time, and location.
++ Personalized fortune-telling based on birth date, time, and location.
 - Daily fortune cookies.
 + Users can create and manage their accounts to keep track of their daily fortune.
-+ Mobile+responsive design.
++ Mobile-responsive design.
 
 All you need is your intuition and focus, and a couple of taps or mouse clicks. Whether you are doing this just for fun or choose to believe in the high magic – ENJOY!
 
@@ -39,7 +39,7 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 
 
 ### APIs
-+ OpenWeatherMap API for location+based weather data https://openweathermap.org/api
++ OpenWeatherMap API for location-based weather data https://openweathermap.org/api
 - Google Calendar API convert to lunar calanders
 
 
@@ -70,7 +70,7 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 
 ### Data
 + User data: Encrypted storage of personal information
-+ Fortune data: Database of 60 Jia+Zi characteristics and corresponding suggestions
++ Fortune data: Database of 60 Jia-Zi characteristics and corresponding suggestions
 
 
 ### Endpoints
@@ -80,7 +80,7 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 
 Parameters:
 + email: User's email
-+ user+name: User's email name
++ user-name: User's email name
 + password: User's provided password
 
 Response:
@@ -107,7 +107,7 @@ Response:
 
 **GET /user/:id/fortune+tell**
 
-+ Get fortune+tell data by submitting user's date of birth
++ Get fortune-tell data by submitting user's date of birth
 
 Parameters:
 + name: user_name
@@ -142,7 +142,7 @@ responses.
 Define database schema and seed initial data.
 
 + Implement Features
-    + Fortune+Telling: Implement calculation and display of fortune+telling data.
+    + Fortune House: Implement calculation and display of fortune-telling data.
     + User Management: Implement user registration, login, and profile management.
 
 + Integrate APIs
