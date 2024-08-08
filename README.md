@@ -52,20 +52,20 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 
 ### Mockups
 #### Register Page
-![Image]([register.jpeg](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/login.jpeg))
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/login.jpeg)
 
 #### Login Page
-![Image]([login.jpeg](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/register.jpeg))
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/register.jpeg)
 
 #### Home Page/ Personal Page 
-![Image]([home.jpeg](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/home.jpeg))
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/home.jpeg)
 
 #### Bazi Calculator Page
-![Image]([form.jpeg](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/form.jpeg))
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/form.jpeg)
 
 #### View Result Page
-![Image]([result.jpeg](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/result.jpeg))
-![Image]([result-popup.jpeg](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/result-popup.jpeg))
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/result.jpeg)
+![Image](https://github.com/oolongjiawei/Capstone/blob/main/src/assets/img-proposal/result-popup.jpeg)
 
 ### Data
 + User data: Encrypted storage of personal information
