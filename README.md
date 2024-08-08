@@ -10,7 +10,7 @@ In today's fast+paced world, people seek quick, accessible ways to gain personal
 
 
 ### User Profile
-+ Individuals interested in self+reflection and personal growth
++ Individuals interested in self-reflection and personal growth
 + Users seeking guidance on life decisions
 + People curious about Eastern philosophy and fortune-telling methods
 
