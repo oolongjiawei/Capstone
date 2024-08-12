@@ -1,5 +1,6 @@
 # Project Title
 FORTUNE HOUSE
+* Unlock Your Destiny Through the Four Pillars of Destiny *
 
 ## Overview
 a website designed to help users gain insights into themselves through detailed descriptions based on their date of birth (and location). By generating a personalized chart using the Four Pillars of Destiny, users can reflect on their character, influences, and potential life trajectory.
@@ -105,7 +106,7 @@ Response:
 }
 ```
 
-**GET /user/:id/fortune+tell**
+**GET /user/:id/fortune-tell**
 
 + Get fortune-tell data by submitting user's date of birth
 
