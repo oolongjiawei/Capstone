@@ -18,7 +18,7 @@ In today's fast+paced world, people seek quick, accessible ways to gain personal
 
 ### Features
 + Personalized fortune-telling based on birth date, time, and location.
-- Daily fortune cookies.
++ Daily fortune cookies.
 + Users can create and manage their accounts to keep track of their daily fortune.
 + Mobile-responsive design.
 
@@ -72,6 +72,7 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 ### Data
 + User data: Encrypted storage of personal information
 + Fortune data: Database of 60 Jia-Zi characteristics and corresponding suggestions
++ Database of fortune cookie sentences for random selection.
 
 
 ### Endpoints
@@ -120,11 +121,32 @@ Response:
 ```
 {
     "id": int,
-    "jia+zi": "Example Jia+Zi",
+    "jia-zi": "Example Jia-Zi",
     "luckyColor": "Example Color",
     "suggestion": "Example Suggestion"
 }
 ```
+**POST /users/:id/furtune-cookie**
+
++ Draws a fortune cookie message and returns a random fortune cookie message.
+
+Parameters:
++ No additional parameters required
+
+Response:
+```
+{
+    "fortune-cookie": "Here's your fortune cookie for today: Stay positive, and your efforts will be rewarded."
+}
+```
+
+Detailed Description:
++ fortune-cookie: The content of the fortune cookie message returned. This message is randomly selected from a predefined list of fortune cookie sentences.
+
+Notes:
++ Ensure that there is a predefined list or database of fortune cookie sentences for random selection.
++ Consider implementing a mechanism to update the fortune messages daily, ensuring that users receive a different message each day.
++ You may need to record the time when a user draws a fortune cookie to enforce a limit of one draw per day.
 
 ### Auth
 Implement JWT authentication for secure access to user data.
@@ -149,8 +171,7 @@ Define database schema and seed initial data.
 + Integrate APIs
 Connect with Weather, and Calendar APIs.
 
-+ Deploy Projects
-Deploy client and server projects to reflect commits in production.
+
 
 + Bug Fixes
 Address any issues that arise during development and testing.
@@ -165,6 +186,9 @@ update readme.md
 
 ## Nice+to+haves
 
+- Deploy Projects
+Deploy client and server projects to reflect commits in production.
+
 - Real time chat:
 Offer an online chat window service (scoket.io) to talk to the fortune teller, help you solve specific problem.
 
@@ -176,8 +200,6 @@ Incorporate true solar time for more accurate calculations.
 
 - Element Percentage: 
 Calculate and display the percentage of each element in the user's chart.
-
-- daily lucky cookie
 
 - UI toggle button:
 Display different UI states for day and night, and give it a toggle button.
