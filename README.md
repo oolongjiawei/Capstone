@@ -72,7 +72,7 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
 ### Data
 + User data: Encrypted storage of personal information
 + Fortune data: Database of 60 Jia-Zi characteristics and corresponding suggestions
-+ Database of fortune cookie sentences for random selection.
++ Data of fortune cookie sentences for random selection.
 
 
 ### Endpoints
