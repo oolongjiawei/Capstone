@@ -1,0 +1,44 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/variables' as *;
+
+.login {
+  &__container {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  &__username{
+    background-image: url("../../assets/icons/face.svg");
+  }
+  &__password{
+    background-image: url("../../assets/icons/lock.svg");
+  }
+  
+  &__card {
+    width: auto;
+    padding: 30px;
+    .logo {
+        margin-bottom: 20px;
+        img {
+        width: 80px;
+        height: 80px;
+        }
+    }
+    .signup-or-login__link {
+        margin-top: 20px;
+        a {
+        &:hover {
+            text-decoration: underline;
+        }
+        }
+    }
+  }
+}
+
+
+        

@@ -1,0 +1,62 @@
+@use "./variables" as *;
+@mixin font($size, $height, $weight) {
+    font-size: $size;
+    line-height: $height;
+    font-weight: $weight;
+}
+
+// mobile text styles:
+h1 {
+    @include font(25px, 36px, 600);
+}
+h2 {
+    @include font(20px, 28px, 600);
+}
+h3 {
+    @include font(13px, 20px, 600);
+}
+h4 {
+    @include font(11px, 16px, 600);
+}
+p {
+    @include font(15px, 26px, 400);
+}
+span {
+    @include font(15px, 26px, 400);
+    color: $C-font;
+    margin-bottom: 2rem;
+}
+ul,
+li,
+a,
+label {
+    @include font(15px, 26px, 400);
+}
+@media only screen and (min-width: 48rem) {
+    h1 {
+        @include font(32px, 40px, 600);
+    }
+    h2 {
+        @include font(24px, 32px, 600);
+    }
+    h3 {
+        @include font(14px, 22px, 600);
+    }
+    h4 {
+        @include font(12px, 18px, 600);
+    }
+    p {
+        @include font(16px, 28px, 500);
+    }
+    span {
+        @include font(16px, 28px, 500);
+        color: $C-font;
+        margin-bottom: 2rem;
+    }
+    ul,
+    li,
+    a,
+    label {
+        @include font(16px, 28px, 500);
+    }
+}

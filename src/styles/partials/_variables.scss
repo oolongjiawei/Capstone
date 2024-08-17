@@ -1,0 +1,95 @@
+//------------------------colorPalette:
+
+//Primary colors
+$C-black: #13182c; //  Global text color
+$C-white: #ffffff; // Global white color-highlight
+$C-red: #dc6969;
+
+
+//theme light
+$C-header: #5c667e; 
+
+$C-font: #7a7a7a;
+$C-font-hover: #00df91; 
+$C-bg: #ecf0f3;
+$C-hover:  #00df91;;
+
+$C-btn-font: #D0ADF0;
+$C-btn: #586081;
+$C-btn-hover: $C-hover; //input
+
+$C-border: $C-bg;
+// $C-border: #bdc5d5;
+$C-border-hover: $C-hover; 
+
+$C-shadow: #cbced1; 
+
+
+
+// theme dark
+// $C-font_dark: #D0ADF0;
+// $C-font-hover_dark: #f0f0f0; 
+// $C-bg_dark: #1a1a1a;
+
+// $C-header_dark: #5c667e; 
+// $C-btn_dark: #010103;
+// $C-border_dark: #bdc5d5; 
+// $C-border-hover_dark: #535bf2; 
+// $C-shadow_dark: #000000; 
+
+
+
+
+//------------------------mixin for-size:
+$tablet: 768px;
+$desktop: 1280px;
+
+//breakpoints--------:
+
+$breakpoint-tablet-min: 768px;
+$breakpoint-tablet-max: 1279px;
+$breakpoint-desktop: 1280px;
+
+//padding
+$paddingMobile: 1rem;
+$paddingTablet: 1.5rem;
+$paddingTabletOutFrame: 2.25rem;
+$paddingInComponents: 0.25rem;
+$headingPadding: 2.25rem;
+
+//button
+$btn-radius: 2rem;
+$mobile-btn-height: 2.25rem;
+$tablet-btn-height: 2.375rem;
+$btn-LR-padding: 1rem;
+
+
+//form variables
+$mobile-form-height: 2.25rem;
+$tablet-form-height: 2.375rem;
+$form-padding: 1rem;
+$form-input-radius: 1.25rem;
+
+//divider
+$divider: 1px solid $C-border;
+
+//screen top
+$max-screen-width: 1280px;
+$screen-topMobile: -4rem;
+$screen-top: -6.25rem;
+
+//
+$border-thick: .2rem;
+$border-radious: 5rem;
+// $shadow: 0 4px 8px rgba($C-shadow, 1);
+$box-shadow:5px 5px 5px $C-shadow, -5px -5px 5px $C-white;
+$btn-shadow:2px 2px 5px $C-shadow, -2px -2px 5px $C-white;
+$inner-shadow:inset 2px 2px 4px $C-shadow, inset -2px -2px 4px $C-white;
+
+//
+
+
+
+//font
+$bazi: 'LongCang';
+$fortune-tell: 'Playwrite Australia NSW';
