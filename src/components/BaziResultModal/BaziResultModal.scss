@@ -5,6 +5,6 @@
 @use '../../styles/partials/variables' as *;
 @use "../../styles/partials/mixin" as *;
 
-.bazi-input {
-    @include popup-styles;
-  }
+.bazi-result {
+  @include popup-styles;
+}

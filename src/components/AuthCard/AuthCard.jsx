@@ -33,6 +33,9 @@ const AuthCard = ({ type }) => {
       const response = await axios.post(url, { email, password, username: isRegister ? username : undefined });
       console.log(`${isRegister ? "Registration" : "Login"} successful`, response.data);
       localStorage.setItem("token", response.data.token);
+      localStorage.setItem('userId', response.data.userId);
+      
+      console.log('Login successful, user ID:', response.data.userId);
 
        // Redirect to the user-specific page
        if (response.data.userId) {
@@ -50,7 +53,7 @@ const AuthCard = ({ type }) => {
     <div className="auth__container">
       <div className="auth__card card">
         <div className="logo">
-          <img src="../../src/assets/images/logo.jpg" alt="Logo" />
+          <img src="../../src/assets/images/logo.png" alt="Logo" />
         </div>
         <h1>{isRegister ? "Sign Up" : "Log In"}</h1>
         <span>{isRegister ? "Create an account!" : "Welcome back!"}</span>

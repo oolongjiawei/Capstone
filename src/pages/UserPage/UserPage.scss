@@ -1,0 +1,87 @@
+@use "../../styles/partials/variables" as *;
+
+.user-page {
+    width: 100vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    &__wrapper {
+        display:flex;
+        justify-content: center;
+    }
+}
+.cat {
+    &__all {
+        position:relative;
+        z-index: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        // Hover effect for the entire container
+        &:hover {
+            .cat__own {
+                filter: drop-shadow(0 0.2rem 0.8rem $C-obj-cat-rimLight) brightness(130%);
+                animation: rotate 0.5s ease-in-out infinite;
+            }
+            .cat__seat {
+                animation: rotate-opposite 0.5s ease-in-out infinite;
+                animation-delay: 0.3s; 
+            }
+        }
+    }
+    
+    &__own {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform-origin: 50% 85%;
+        position: relative;
+        min-width: 200px;
+        z-index: 1; 
+    
+        filter: none;
+        transition: filter 0.3s ease-in-out;
+        animation: none;
+    
+        @keyframes rotate {
+            0% {
+                transform: rotate(-0.5deg);
+            }
+            50% {
+                transform: rotate(0.5deg);
+            }
+            100% {
+                transform: rotate(-0.5deg);
+            }
+        }
+    }
+    
+    &__seat {
+        position: absolute; 
+        transform-origin: 50% 50%;
+        top: 195px;
+        right: -28px;
+        width: 250px;
+        height: auto;
+        object-fit: cover;
+        z-index: 0; 
+    
+        filter: none;
+        transition: filter 0.3s ease-in-out;
+        animation: none;
+        animation-delay: .15s;
+    
+        @keyframes rotate-opposite {
+            0% {
+                transform: rotate(0.2deg);
+            }
+            50% {
+                transform: rotate(-0.2deg);
+            }
+            100% {
+                transform: rotate(0.2deg);
+            }
+        }
+    }
+}

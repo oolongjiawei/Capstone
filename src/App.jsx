@@ -5,7 +5,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
-import FortunePage from './pages/FortunePage/FortunePage';
+import UserPage from './pages/UserPage/UserPage.jsx';
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx';
 import "./App.scss";
 
@@ -19,7 +19,7 @@ function App() {
       <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user/:userId" element={<FortunePage />} />
+        <Route path="/user/:userId" element={<UserPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
         {/* <Footer />   */}
