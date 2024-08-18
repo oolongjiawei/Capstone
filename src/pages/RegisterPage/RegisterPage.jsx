@@ -1,11 +1,11 @@
 import AuthCard from '../../components/AuthCard/AuthCard';
 
-const LoginPage = () => {
+const RegisterPage = () => {
   return (
     <div>
-      <AuthCard type="login" />
+      <AuthCard type="register" />
     </div>
   );
 };
 
-export default LoginPage;
+export default RegisterPage

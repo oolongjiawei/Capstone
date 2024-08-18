@@ -69,22 +69,11 @@ button {
         height: 2.375rem;
     }
 }
-.box {
-
-}
 textarea {
     resize: none;
 }
-// .icon {
-//     padding: 0;
-//     display: flex;
-//     justify-content: center;
-//     &:hover {
-//         cursor: pointer;
-//     }
-// }
-
 input {
+    
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -99,6 +88,9 @@ input {
     padding: 1rem 1rem 1rem 4rem;
     transition: .3s;
     margin-bottom: 1rem;
+    &__container {
+        width: 100%;
+    }
     &:active {
     border-color: $C-border-hover;
     }
@@ -107,14 +99,15 @@ input {
         outline: none;
     }
     &:invalid { 
-        border-color: $C-red !important;
+        // border-color: $C-red !important;
         outline: none;
     }
     &.error {
         border-color: $C-red;
+        
     } 
     &::placeholder {
-        // color: #aaa;
+        color: #bcbaba;
     }
 }
 a {
@@ -149,17 +142,42 @@ img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    box-shadow: $box-shadow;
+    // box-shadow: $box-shadow;
+    filter: none;
+    will-change: filter;
+    transition: filter 300ms;
+    }
+    
+    &:hover {
+      filter: drop-shadow(0 0 2em #fbff23aa);
+    }
+
+    @keyframes logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      
+      @media (prefers-reduced-motion: no-preference) {
+        a:nth-of-type(2) {
+          .logo {
+            animation: logo-spin infinite 20s linear;
+          }
+        }
     }
 }
 .card {
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     border-radius: 20px;
     box-shadow: $box-shadow;
     text-align: center;
+    margin:0 clamp(1.6rem, 0.457rem + 5.714vw, 3.2rem);
 }
 button {
     cursor: pointer;
@@ -185,7 +203,12 @@ button {
     // }
   }
 
- 
+form {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
   
 //   @media (prefers-color-scheme: dark) {
 //     * {

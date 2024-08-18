@@ -1,17 +1,17 @@
 // import "./Homepage.scss";
-import Login from "../../components/LoginForm/LoginForm.jsx"
+// import XXX from "../../components/"
 
 
-const WarehousePage = () => {
-    // const URL = import.meta.env.VITE_APP_BASE_URL;
-    const URL = 'http://localhost:5173';
+// const HomePage = () => {
+//     // const URL = import.meta.env.VITE_APP_BASE_URL;
+//     const URL = 'http://localhost:5173';
 
 
-    return (
-        <>
-           <Login />
-        </>
-    );
-};
+//     return (
+//         <>
+//            <XXX />
+//         </>
+//     );
+// };
 
-export default WarehousePage;
+// export default HomePage;

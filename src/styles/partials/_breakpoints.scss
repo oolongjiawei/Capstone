@@ -5,9 +5,18 @@
         @content;
     }
 }
-
+@mixin mid {
+    @media screen and (min-width: $breakpoint-tablet-mid) {
+        @content;
+    }
+}
 @mixin desktop {
     @media screen and (min-width: $breakpoint-desktop) {
         @content;
     }
 }
+
+@include mid {}
+
+@include tablet {}
+@include desktop {}

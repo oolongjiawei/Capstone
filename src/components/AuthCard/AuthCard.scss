@@ -4,8 +4,31 @@
 @use '../../styles/partials/typography' as *;
 @use '../../styles/partials/variables' as *;
 
-.login {
+
+.input__container.username, .input__container.confirm-password {
+  display: block; 
+}
+
+
+.username,
+.confirm-password {
+  display: block;
+}
+
+.email,
+.password {
+  display: block;
+}
+
+.confirm-password,
+.username {
+  display: none;
+}
+
+
+.auth {
   &__container {
+    
       width: 100vw;
       height: 100vh;
       display: flex;
@@ -15,12 +38,15 @@
   &__username{
     background-image: url("../../assets/icons/face.svg");
   }
+  &__email{
+    background-image: url("../../assets/icons/email.svg");
+  }
   &__password{
     background-image: url("../../assets/icons/lock.svg");
   }
   
   &__card {
-    width: auto;
+    width: clamp(28rem, 19.429rem + 42.857vw, 40rem);
     padding: 30px;
     .logo {
         margin-bottom: 20px;
@@ -39,6 +65,7 @@
     }
   }
 }
+
 
 
         
