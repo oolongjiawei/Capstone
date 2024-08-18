@@ -31,8 +31,7 @@ const UserPage = () => {
         return;
     }
     try {
-        // const userId = response.data.id ;
-    //   const { userId } = useParams();
+      console.log('Sending Bazi data:', baziData); 
       const response = await axios.post('http://localhost:8080/api/fortune/bazi', {
         birthYear: baziData.year,
         birthMonth: baziData.month,
@@ -42,9 +41,8 @@ const UserPage = () => {
         userId: userId,
       });
       console.log('Generated Bazi data:', response.data);
-
-    setBaziData(response.data.bazi);
-    setIsBaziPopupOpen(true);
+      setBaziData(response.data.bazi);
+      setIsBaziPopupOpen(true);
     } catch (error) {
       console.error('Error generating Bazi:', error.response ? error.response.data : error.message);
     }
@@ -52,6 +50,34 @@ const UserPage = () => {
   
   const handleBaziPopupClose = () => {
     setIsBaziPopupOpen(false);
+    setBaziData(null); 
+  };
+
+  const handleSaveBazi = async () => {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User ID is missing.');
+        return;
+  }
+    try {
+      const response = await axios.post('http://localhost:8080/api/fortune/bazi', {
+        birthYear: baziData.birth_year,  
+        birthMonth: baziData.birth_month,
+        birthDay: baziData.birth_day,
+        birthTime: baziData.birth_time,
+        save: true, 
+        userId: userId,
+      });
+      console.log('Bazi data saved successfully:', response.data);
+      setIsBaziPopupOpen(false); 
+    } catch (error) {
+      console.error('Error saving Bazi:', error.response ? error.response.data : error.message);
+    }
+  };
+
+  const handleRegenerateBazi = () => {
+    setIsModalOpen(true); 
+    setIsBaziPopupOpen(false); 
   };
 
   return (
@@ -73,6 +99,8 @@ const UserPage = () => {
             isOpen={isBaziPopupOpen}
             onClose={handleBaziPopupClose}
             baziData={baziData}
+            onSave={handleSaveBazi}
+            onRegenerate={handleRegenerateBazi}
         />
     </div>
   );

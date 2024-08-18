@@ -55,44 +55,30 @@ a {
     // color: $C-black;
     text-align: left;
 }
-button {
-    width: 100%;
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    border-radius: 1.25rem;
-    padding: 0 1rem;
-    height: 2.25rem;
-    // box-shadow: 5px 5px 5px $C-shadow, 5px 5px 5px $C-white;
-    // box-shadow: $shadow;
-    @include tablet {
-        height: 2.375rem;
-    }
-}
+
 textarea {
     resize: none;
 }
 
 input {
-    font-size: 2.4rem;
-    letter-spacing: .15rem;
-    font-family: "LongCang";
-    width: 100%;
+    margin-bottom: 1rem;
+    text-align: left;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
+    letter-spacing: .15rem;
+    width: 100%;
     border-radius: $border-radious;
     box-shadow: $inner-shadow;
     border: $border-thick solid $C-border;
     outline: none;
     background-repeat: no-repeat;
     background-position: 1rem 50%;
-    padding: 1rem 1rem 1rem 4rem;
+    padding: 1rem 3rem 1rem 3rem;
     transition: .3s;
-    margin-bottom: 1rem;
     &__container {
         width: 100%;
+        display: flex;
     }
     &:active {
     border-color: $C-border-hover;
@@ -107,12 +93,42 @@ input {
     }
     &.error {
         border-color: $C-red;
-        
     } 
     &::placeholder {
         color: #bcbaba;
     }
 }
+button {
+    display: flex;
+    flex-direction: row;
+    line-height: 1rem;
+    letter-spacing: clamp(0rem, -0.357rem + 1.786vw, 0.5rem);
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    font-weight: 500;
+    width: 100%;
+    height: 5rem;
+    border: $border-thick solid $C-border;
+    border-radius: $btn-radius;
+    background-color: $C-btn;
+    color: $C-btn-font;
+    box-shadow: $btn-shadow;
+    transition: border-color 0.3s;
+    margin-top: 2rem;
+    &:hover {
+      background-color: $C-btn-hover;
+      color: $C-btn;
+      font-weight: 600;
+    }
+    // &:focus,
+    // &:focus-visible {
+    //   outline: 4px auto;
+    // }
+  }
 a {
     &:hover {
       color: $C-font-hover;
@@ -141,20 +157,23 @@ img {
     } 
 };
 .logo {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     img {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    // border-radius: 50%;
     // box-shadow: $box-shadow;
-    filter: none;
-    will-change: filter;
-    transition: filter 300ms;
+    transform-origin: 50% 50%;
+    will-change: transform, filter; 
+    animation: logo-spin infinite 20s linear; 
+    transform: rotate(360deg);
+    }
+    &:hover {
+      filter: drop-shadow(0 0 2rem #671458cc);
     }
     
-    &:hover {
-      filter: drop-shadow(0 0 2em #fbff23aa);
-    }
-
     @keyframes logo-spin {
         from {
           transform: rotate(0deg);
@@ -163,49 +182,16 @@ img {
           transform: rotate(360deg);
         }
       }
-      
-      @media (prefers-reduced-motion: no-preference) {
-        a:nth-of-type(2) {
-          .logo {
-            animation: logo-spin infinite 20s linear;
-          }
-        }
-    }
 }
 .card {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
-    border-radius: 20px;
-    box-shadow: $box-shadow;
+    border-radius: 2rem;
+    // box-shadow: $box-shadow;
     text-align: center;
     margin:0 clamp(1.6rem, 0.457rem + 5.714vw, 3.2rem);
 }
-button {
-    cursor: pointer;
-    border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-weight: 500;
-    width: 100%;
-    padding: 15px;
-    border: $border-thick solid $C-border;
-    border-radius: $btn-radius;
-    background-color: $C-btn;
-    color: $C-btn-font;
-    box-shadow: $btn-shadow;
-    transition: border-color 0.3s;
-    
-    &:hover {
-    //   border-color: $C-btn-hover;
-      background-color: $C-btn-hover;
-    }
-    // &:focus,
-    // &:focus-visible {
-    //   outline: 4px auto;
-    // }
-  }
-
 form {
     display: flex;
     width: 100%;
@@ -228,7 +214,11 @@ form {
         opacity: 1;
       }
   }
-
+label {
+    margin-top: 1rem;
+    display: flex;
+    padding-left: 2rem;
+}
   
 //   @media (prefers-color-scheme: dark) {
 //     * {

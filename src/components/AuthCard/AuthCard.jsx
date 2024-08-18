@@ -45,18 +45,20 @@ const AuthCard = ({ type }) => {
         console.error("User ID is missing in the response");
       }
     } catch (err) {
-      setError("An error occurred");
+      setError("An error occurred !!");
     }
   };
 
   return (
     <div className="auth__container">
       <div className="auth__card card">
-        <div className="logo">
-          <img src="../../src/assets/images/logo.png" alt="Logo" />
-        </div>
-        <h1>{isRegister ? "Sign Up" : "Log In"}</h1>
-        <span>{isRegister ? "Create an account!" : "Welcome back!"}</span>
+        <div className="auth__header ">
+          <div className="logo">
+            <img src="../../src/assets/images/logo.png" alt="Logo" />
+          </div>
+          <h1>{isRegister ? "Sign Up" : "Log In"}</h1>
+          <span>{isRegister ? "Create an account!" : "Welcome back!"}</span>
+        </div>  
         {error && <p className="error-message">{error}</p>}
         <form className="form" onSubmit={handleSubmit}>
           {isRegister && (
@@ -64,7 +66,7 @@ const AuthCard = ({ type }) => {
                 <i className="fas fa-user"></i>
                 <input
                   type="text"
-                  className="auth__username"
+                  className="auth__username  auth__input"
                   placeholder="Username"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -76,7 +78,7 @@ const AuthCard = ({ type }) => {
             <i className="fas fa-envelope"></i>
             <input
               type="email"
-              className="auth__email"
+              className="auth__email auth__input"
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -87,7 +89,7 @@ const AuthCard = ({ type }) => {
             {/* <i className="fas fa-lock"></i> */}
             <input
               type="password"
-              className="auth__password"
+              className="auth__password  auth__input"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -99,7 +101,7 @@ const AuthCard = ({ type }) => {
                 {/* <i className="fas fa-lock"></i> */}
                 <input
                   type="password"
-                  className="auth__password"
+                  className="auth__password  auth__input"
                   placeholder="Confirm Password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}

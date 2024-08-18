@@ -8,27 +8,27 @@
 .input__container.username, .input__container.confirm-password {
   display: block; 
 }
-
-
 .username,
 .confirm-password {
   display: block;
 }
-
 .email,
 .password {
   display: block;
 }
-
 .confirm-password,
 .username {
   display: none;
 }
-
-
+.error-message {
+  margin: 1rem 0;
+  color: $C-white; 
+  padding: .4rem 2rem 0rem; 
+  border-radius: 36rem;
+  background-color: $C-red;
+}
 .auth {
   &__container {
-    
       width: 100vw;
       height: 100vh;
       display: flex;
@@ -44,15 +44,27 @@
   &__password{
     background-image: url("../../assets/icons/lock.svg");
   }
-  
+  &__input {
+    padding: 1rem 1rem 1rem 4rem;
+  }
   &__card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     width: clamp(28rem, 19.429rem + 42.857vw, 40rem);
     padding: 30px;
     .logo {
+      display: flex;
+      justify-content: center;
         margin-bottom: 20px;
         img {
-        width: 80px;
-        height: 80px;
+        // border-radius: 50%;
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+        object-position: 50% 50%;
+        filter: drop-shadow(1rem 1rem 0rem $box-shadow);
         }
     }
     .signup-or-login__link {
@@ -64,8 +76,7 @@
         }
     }
   }
+  &__header {
+    margin-bottom: 2rem;
+  }
 }
-
-
-
-        

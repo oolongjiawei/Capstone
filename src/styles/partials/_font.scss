@@ -78,6 +78,8 @@ span {
 ul,
 li,
 a,
+input,
+button,
 label {
     @include font(
         clamp(1.5rem, 1.429rem + 0.357vw, 1.6rem),

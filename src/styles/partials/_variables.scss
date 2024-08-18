@@ -10,11 +10,11 @@ $C-red: #dc6969;
 $C-header: #5c667e; 
 
 $C-font: #7a7a7a;
-$C-font-hover: #00df91; 
+$C-font-hover: #decc2e; 
 $C-bg: #ecf0f3;
-$C-hover:  #00df91;;
+$C-hover:  #e3d770;
 
-$C-btn-font: #D0ADF0;
+$C-btn-font: $C-white;
 $C-btn: #586081;
 $C-btn-hover: $C-hover; //input
 
@@ -62,10 +62,10 @@ $tablet-btn-height: 3.8rem;
 $btn-LR-padding: 1.6rem;
 
 //divider
-$divider: 1px solid $C-border;
+$divider: 3px solid $C-border;
 
 //
-$border-thick: .2rem;
+$border-thick: .5rem;
 $border-radious: 5rem;
 // $shadow: 0 4px 8px rgba($C-shadow, 1);
 $box-shadow:5px 5px 5px $C-shadow, -5px -5px 5px $C-white;
