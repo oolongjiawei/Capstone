@@ -1,4 +1,9 @@
-@use "../../styles/partials/variables" as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
 
 .user-page {
     width: 100vw;

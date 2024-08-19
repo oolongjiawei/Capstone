@@ -4,7 +4,6 @@ import "./AuthCard.scss";
 import { useNavigate } from "react-router-dom";
 
 const AuthCard = ({ type }) => {
-  
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,27 +20,44 @@ const AuthCard = ({ type }) => {
   const [username, setUsername] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [isRequired, setIsRequired] = useState(false); // 动态控制 required 属性
+
+  const validateForm = () => {
+    if (!email || !password || (isRegister && !username)) {
+      setError("Please fill out all required fields.");
+      return false;
+    }
+
+    if (isRegister && password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return false;
+    }
+
+    return true;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isRegister && password !== confirmPassword) {
-      setError("Passwords do not match");
+    setHasSubmitted(true);
+    setIsRequired(true);  // 提交表单后，才将 `required` 属性设为 `true`
+
+    if (!validateForm()) {
       return;
     }
+
     try {
       const url = isRegister ? "http://localhost:8080/api/auth/register" : "http://localhost:8080/api/auth/login";
       const response = await axios.post(url, { email, password, username: isRegister ? username : undefined });
       console.log(`${isRegister ? "Registration" : "Login"} successful`, response.data);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem('userId', response.data.userId);
-      
+
       console.log('Login successful, user ID:', response.data.userId);
 
-       // Redirect to the user-specific page
-       if (response.data.userId) {
+      if (response.data.userId) {
         navigate(`/user/${response.data.userId}`);
       } else {
-        // Handle cases where userId is not returned
         console.error("User ID is missing in the response");
       }
     } catch (err) {
@@ -52,7 +68,7 @@ const AuthCard = ({ type }) => {
   return (
     <div className="auth__container">
       <div className="auth__card card">
-        <div className="auth__header ">
+        <div className="auth__header">
           <div className="logo">
             <img src="../../src/assets/images/logo.png" alt="Logo" />
           </div>
@@ -62,19 +78,19 @@ const AuthCard = ({ type }) => {
         {error && <p className="error-message">{error}</p>}
         <form className="form" onSubmit={handleSubmit}>
           {isRegister && (
-              <div className="input__container username">
-                <i className="fas fa-user"></i>
-                <input
-                  type="text"
-                  className="auth__username  auth__input"
-                  placeholder="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  required
-                />
-              </div>
+            <div className={`input__container username ${hasSubmitted && !username ? 'invalid' : ''}`}>
+              <i className="fas fa-user"></i>
+              <input
+                type="text"
+                className="auth__username  auth__input"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required={isRequired}
+              />
+            </div>
           )}
-          <div className="input__container email">
+          <div className={`input__container email ${hasSubmitted && !email ? 'invalid' : ''}`}>
             <i className="fas fa-envelope"></i>
             <input
               type="email"
@@ -82,38 +98,36 @@ const AuthCard = ({ type }) => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
+              required={isRequired}
             />
           </div>
-          <div className="input__container password">
-            {/* <i className="fas fa-lock"></i> */}
+          <div className={`input__container password ${hasSubmitted && !password ? 'invalid' : ''}`}>
             <input
               type="password"
-              className="auth__password  auth__input"
+              className="auth__password auth__input"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              required
+              required={isRequired}
             />
           </div>
           {isRegister && (
-              <div className="input__container confirm-password">
-                {/* <i className="fas fa-lock"></i> */}
-                <input
-                  type="password"
-                  className="auth__password  auth__input"
-                  placeholder="Confirm Password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </div>
+            <div className={`input__container confirm-password ${hasSubmitted && (password !== confirmPassword) ? 'invalid' : ''}`}>
+              <input
+                type="password"
+                className="auth__password auth__input"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required={isRequired}
+              />
+            </div>
           )}
           <button type="submit">{isRegister ? "Sign Up" : "Login"}</button>
         </form>
         <div className="signup-or-login__link">
           {isRegister ? (
-            <a href="/login">Already have an account?<br/>Log In</a>
+            <a href="/login">Already have an account?<br />Log In</a>
           ) : (
             <a href="/register">Sign Up</a>
           )}

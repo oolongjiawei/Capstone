@@ -1,10 +1,8 @@
 //------------------------colorPalette:
-
 //Primary colors
 $C-black: #13182c; //  Global text color
 $C-white: #ffffff; // Global white color-highlight
 $C-red: #dc6969;
-
 
 //theme light
 $C-header: #5c667e; 
@@ -27,9 +25,7 @@ $C-border-hover: $C-hover;
 $C-shadow: #cbced1; 
 $C-obj-cat-rimLight: #ffe9aed4; 
 
-
-
-// theme dark
+//---------------theme dark：
 // $C-font_dark: #D0ADF0;
 // $C-font-hover_dark: #f0f0f0; 
 // $C-bg_dark: #1a1a1a;
@@ -40,7 +36,18 @@ $C-obj-cat-rimLight: #ffe9aed4;
 // $C-border-hover_dark: #535bf2; 
 // $C-shadow_dark: #000000; 
 
-
+// @media (prefers-color-scheme: dark) {
+//     * {
+//         color: $C-font_dark;
+//         background-color: $C-bg_dark;
+//     }
+//     a:hover {
+//         color: $C-font-hover_dark;
+//     }
+//     button {
+//         background-color: $C-bg_dark;
+//     }
+// }
 
 
 //------------------------mixin for-size:
@@ -74,10 +81,6 @@ $border-radious: 5rem;
 $box-shadow:5px 5px 5px $C-shadow, -5px -5px 5px $C-white;
 $btn-shadow:2px 2px 5px $C-shadow, -2px -2px 5px $C-white;
 $inner-shadow:inset 2px 2px 4px $C-shadow, inset -2px -2px 4px $C-white;
-
-//
-
-
 
 //font
 $bazi: 'LongCang';

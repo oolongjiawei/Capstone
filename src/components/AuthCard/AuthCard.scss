@@ -20,13 +20,7 @@
 .username {
   display: none;
 }
-.error-message {
-  margin: 1rem 0;
-  color: $C-white; 
-  padding: .4rem 2rem 0rem; 
-  border-radius: 36rem;
-  background-color: $C-red;
-}
+
 .auth {
   &__container {
       width: 100vw;

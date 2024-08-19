@@ -7,4 +7,40 @@
 
 .bazi-result {
   @include popup-styles;
+
+  &__popup {
+    
+    // &--bg {
+    //   position: relative;
+    //   width: 100%;
+    //   top: -30rem;
+    // }
+
+    &--bazi {
+      padding: 5rem 2rem 0rem 2rem;
+      text-align: left;
+      // box-shadow: $box-shadow;
+      // display: flex;
+      // align-items: center;
+      // flex-direction: column;
+    }
+    &--brief {
+      padding: 3rem 2rem 2rem 2rem;
+      margin-top: 2rem;
+      text-align: left;
+      font-size: 120%;
+      color:$C-red;
+      // text-shadow: #FC0 1px 0 5px;
+      background-color: $C-btn-hover;
+      box-shadow: $box-shadow;
+    }
+    &--day {
+      color: $C-red;
+      // text-shadow: #FC0 1px 0 5px;
+      // font-size: 150%;
+      background-color:  $C-btn-hover;
+      padding: 1rem .5rem .5rem;
+
+    }
+  }
 }
