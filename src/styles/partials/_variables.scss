@@ -14,9 +14,12 @@ $C-font-hover: #decc2e;
 $C-bg: #ecf0f3;
 $C-hover:  #e3d770;
 
-$C-btn-font: $C-white;
-$C-btn: #586081;
-$C-btn-hover: $C-hover; //input
+// $C-btn-font: $C-white;
+// $C-btn: #586081;
+$C-btn-font: #5c667e;
+$C-btn: $C-bg;
+$C-btn-hover: $C-hover; 
+$C-btn-active: #decc2e; //input
 
 $C-border: $C-bg;
 $C-border-hover: $C-hover; 

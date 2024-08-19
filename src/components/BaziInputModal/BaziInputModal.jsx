@@ -19,11 +19,13 @@ const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
       day < 1 || day > 31 ||
       hour < 0 || hour > 23
     ) {
-      alert('Please enter valid values within the allowed range.');
+      // alert('Please enter valid values within the allowed range.');
       return;
     }
-    onSubmit({ year, month, day, hour });
-    onClose(); 
+    setTimeout(() => {
+      onSubmit({ year, month, day, hour });
+      onClose();
+    }, 300); 
   };
 
   return (
@@ -33,53 +35,60 @@ const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
       contentLabel="Bazi Input Modal"
       className="bazi-input__modal card"
       overlayClassName="bazi-input__overlay"
+      closeTimeoutMS={300} 
     >
-      <h1>Enter Bazi Information</h1>
+      <h1>Enter Your Information</h1>
       <div className='bazi-input__popup'>
-        <div className="input-group">
-          <label>Birth Year:</label>
-          <input
-            type="number"
-            placeholder=""
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            min="1900"
-            max={currentYear}
-          />
-        </div>
-        <div className="input-group">
-          <label>Birth Month:</label>
-          <input
-            type="number"
-            placeholder=""
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-            min="1"
-            max="12"
-          />
-        </div>
-        <div className="input-group">
-          <label>Birth Day:</label>
-          <input
-            type="number"
-            placeholder=""
-            value={day}
-            onChange={(e) => setDay(e.target.value)}
-            min="1"
-            max="31"
-          />
-        </div>
-        <div className="input-group">
-          <label>Birth Hour:</label>
-          <input
-            type="number"
-            placeholder=""
-            value={hour}
-            onChange={(e) => setHour(e.target.value)}
-            min="0"
-            max="23"
-          />
-        </div>
+        <div className='bazi-input__fields'>
+            <div className="bazi-input__field">
+              <label>Birth Year:</label>
+              <input
+                className='bazi-input__detail'
+                type="number"
+                placeholder="1950 - current"
+                value={year}
+                onChange={(e) => setYear(e.target.value)}
+                min="1950"
+                max={currentYear}
+              />
+            </div>
+            <div className="bazi-input__field">
+              <label>Birth Month:</label>
+              <input
+                className='bazi-input__detail'
+                type="number"
+                placeholder="1 - 12"
+                value={month}
+                onChange={(e) => setMonth(e.target.value)}
+                min="1"
+                max="12"
+              />
+            </div>
+            <div className="bazi-input__field">
+              <label>Birth Day:</label>
+              <input
+                className='bazi-input__detail'
+                type="number"
+                placeholder="1 - 31"
+                value={day}
+                onChange={(e) => setDay(e.target.value)}
+                min="1"
+                max="31"
+              />
+            </div>
+            <div className="bazi-input__field">
+              <label>Birth Hour:</label>
+              <input
+                className='bazi-input__detail'
+                type="number"
+                placeholder="1 - 23"
+                value={hour}
+                onChange={(e) => setHour(e.target.value)}
+                min="0"
+                max="23"
+              />
+            </div>
+          </div>
         <button onClick={handleSubmit}>Generate Bazi</button>
       </div>
     </Modal>

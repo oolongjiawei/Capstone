@@ -29,10 +29,10 @@ h2 {
     };
 
 }
-
+button,
 h3 {
     @include font(
-        clamp(1.3rem, 1.229rem + 0.357vw, 1.4rem),
+        clamp(1.8rem, 1.514rem + 1.429vw, 2.2rem),
         clamp(2.0rem, 1.714rem + 1.429vw, 2.2rem),
     );
     font-weight: 600;
@@ -79,7 +79,6 @@ ul,
 li,
 a,
 input,
-button,
 label {
     @include font(
         clamp(1.5rem, 1.429rem + 0.357vw, 1.6rem),

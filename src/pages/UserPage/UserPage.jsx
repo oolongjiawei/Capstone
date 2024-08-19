@@ -7,23 +7,24 @@ import axios from 'axios';
 import catBlack from "../../assets/images/cat-black.png";
 // import catWhite from "../../assets/images/cat-white.png";
 import catPat from "../../assets/images/cat-pat.png";
-// import cookie from "../../assets/images/cookie.png";
+import cookie from "../../assets/images/cookie.png";
 
 
 const UserPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [baziData, setBaziData] = useState(null); 
   const [isBaziPopupOpen, setIsBaziPopupOpen] = useState(false); 
+  const [fortuneMessage, setFortuneMessage] = useState(''); // for saving of new generate fortune cookie
 
-
+// open input popup
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
-
+// close input popup
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
-
+// deal with bazi input
   const handleBaziSubmit = async (baziData) => {
     const userId = localStorage.getItem('userId'); 
     if (!userId) {
@@ -47,12 +48,30 @@ const UserPage = () => {
       console.error('Error generating Bazi:', error.response ? error.response.data : error.message);
     }
   };
-  
+//generate daily cookie
+  const handleGenerateFortuneCookie = async () => {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      console.error('User ID is missing.');
+      return;
+    }
+    try {
+      const response = await axios.post('http://localhost:8080/api/fortune/cookie', {
+        userId: userId,
+        save: false, //unsave
+      });
+      console.log('Generated Fortune Cookie:', response.data.fortune);
+      setFortuneMessage(response.data.fortune);
+    } catch (error) {
+      console.error('Error generating Fortune Cookie:', error.response ? error.response.data : error.message);
+    }
+  };
+  //close bazi result popup
   const handleBaziPopupClose = () => {
     setIsBaziPopupOpen(false);
     setBaziData(null); 
   };
-
+//save or replace already exist bazi result
   const handleSaveBazi = async () => {
     const userId = localStorage.getItem('userId');
     if (!userId) {
@@ -84,10 +103,21 @@ const UserPage = () => {
     <div className="user-page">
         <div className="user-page__wrapper">
             <div className="cat__all" onClick={handleOpenModal}>
-                <div className="cat__seat">
-                    <img src={catPat} alt="cat seat pat" />
-                </div>
                 <img className='cat__own' src={catBlack} alt="fortune black cat" />
+                <div className="cat__seat">
+                  <img src={catPat} alt="cat seat pat" />
+                </div>
+            </div>
+
+            <div className="cookies__all">
+              {/* <button className='' onClick={handleGenerateFortuneCookie}>Fortune Cookie</button> */}
+              <img 
+                src={cookie} 
+                alt="Fortune Cookie" 
+                onClick={handleGenerateFortuneCookie} 
+                className="fortune-cookie__image"
+              />
+              {fortuneMessage && <p>Your Fortune Cookie: {fortuneMessage}</p>}
             </div>
         </div>
         <BaziInputModal

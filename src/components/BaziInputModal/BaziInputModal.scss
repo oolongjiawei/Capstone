@@ -7,4 +7,17 @@
 
 .bazi-input {
     @include popup-styles;
+    &__detail{
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    &__fields {
+      width: 100%;
+      max-width: 32rem;
+      margin: auto;
+    }
   }

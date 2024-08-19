@@ -32,7 +32,7 @@ body {
     position: relative;
     margin: 0;
     padding: 0;
-    font-family: 'Tajawal','LongCang', 'Avenir Next LT Pro', 'Open Sans', sans-serif;
+    font-family: 'Jost', 'LongCang', 'Open Sans', sans-serif;
     // color: $black;
     background-color: $C-bg; 
     pointer-events: auto;
@@ -54,6 +54,7 @@ a {
     text-decoration: none;
     // color: $C-black;
     text-align: left;
+    color: $C-font;
 }
 
 textarea {
@@ -61,6 +62,7 @@ textarea {
 }
 
 input {
+
     margin-bottom: 1rem;
     text-align: left;
     display: flex;
@@ -74,7 +76,8 @@ input {
     outline: none;
     background-repeat: no-repeat;
     background-position: 1rem 50%;
-    padding: 1rem 3rem 1rem 3rem;
+    font-size: clamp(1.4rem, 0.686rem + 3.571vw, 2.4rem);
+    padding: clamp(0rem, -0.714rem + 3.571vw, 1rem) clamp(0rem, -2.143rem + 10.714vw, 3rem) clamp(0rem, -0.714rem + 3.571vw, 1rem);
     transition: .3s;
     &__container {
         width: 100%;
@@ -87,13 +90,27 @@ input {
         border-color: $C-border-hover !important;
         outline: none;
     }
+    @keyframes fadeInvalid {
+        0%, 100% {
+          border-color: $C-red;
+          color: $C-red;
+          opacity: 1;
+        }
+        50% {
+          border-color: transparent;
+          color: transparent;
+          opacity: 0.5;
+        }
+      }
     &:invalid { 
-        // border-color: $C-red !important;
+        border-color: $C-red !important;
         outline: none;
+        color: $C-red ;
+        animation: fadeInvalid 1.5s infinite;
     }
-    &.error {
-        border-color: $C-red;
-    } 
+    // &.error {
+    //     border-color: $C-red;
+    // } 
     &::placeholder {
         color: #bcbaba;
     }
@@ -101,28 +118,39 @@ input {
 button {
     display: flex;
     flex-direction: row;
-    line-height: 1rem;
-    letter-spacing: clamp(0rem, -0.357rem + 1.786vw, 0.5rem);
+    letter-spacing: clamp(0rem, -0.214rem + 1.071vw, 0.3rem);
     font-weight: 800;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     border: 1px solid transparent;
-    font-weight: 500;
+    font-weight: 600;
     width: 100%;
     height: 5rem;
     border: $border-thick solid $C-border;
     border-radius: $btn-radius;
     background-color: $C-btn;
-    color: $C-btn-font;
+    color: $C-font;
     box-shadow: $btn-shadow;
     transition: border-color 0.3s;
+    transition: background-color 0.3s;
+    transition: transform 0.3s;
     margin-top: 2rem;
     &:hover {
       background-color: $C-btn-hover;
+      border-color: $C-btn-hover;
       color: $C-btn;
       font-weight: 600;
+      font-size: 110%;
+      transform: scale(1.02);
+    }
+    &:active {
+        border-color: $C-btn-active;
+        background-color: $C-btn-active;
+
+        font-size: 95%;
+        transform: scale(.95);
     }
     // &:focus,
     // &:focus-visible {
@@ -199,26 +227,26 @@ form {
     justify-content: center;
 }
 
-.grow {
-    transition: transform 1s;
-    will-change: scale;
-    &:hover {
-        transform: scale(1.2);
-      }
-  }
-  .fade {
-    opacity: 0.5;
-    transition: opacity 1s;
-    will-change: opacity;
-    &:hover {
-        opacity: 1;
-      }
-  }
-label {
-    margin-top: 1rem;
-    display: flex;
-    padding-left: 2rem;
-}
+// .grow {
+//     transition: transform 1s;
+//     will-change: scale;
+//     &:hover {
+//         transform: scale(1.2);
+//       }
+//   }
+//   .fade {
+//     opacity: 0.5;
+//     transition: opacity 1s;
+//     will-change: opacity;
+//     &:hover {
+//         opacity: 1;
+//       }
+//   }
+// label {
+//     margin-top: 1rem;
+//     display: flex;
+//     padding-left: 2rem;
+// }
   
 //   @media (prefers-color-scheme: dark) {
 //     * {
