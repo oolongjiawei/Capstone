@@ -1,6 +1,6 @@
 //------------------------colorPalette:
 //Primary colors
-$C-black: #13182c; //  Global text color
+$C-black: #302222; //  Global text color
 $C-white: #ffffff; // Global white color-highlight
 $C-red: #dc6969;
 
@@ -53,6 +53,14 @@ $C-obj-cat-rimLight: #ffe9aed4;
 //------------------------mixin for-size:
 $tablet: 768px;
 $desktop: 1280px;
+// 
+$header-height-tablet: clamp(3rem, -2rem + 25vw, 10rem);
+$header-height: clamp(6.5rem, 1.857rem + 23.214vw, 13rem);
+
+// height: calc(100vh - #{$header-height});
+// @include tablet {
+//     height: calc(100vh - #{$header-height-tablet});
+// }
 
 //breakpoints--------:
 $breakpoint-tablet-min: 768px;
@@ -72,16 +80,22 @@ $tablet-btn-height: 3.8rem;
 $btn-LR-padding: 1.6rem;
 
 //divider
-$divider: 3px solid $C-border;
+$divider: 3px solid rgba($C-font, .3);
+
 
 //
 $border-thick: .5rem;
 $border-radious: 5rem;
 // $shadow: 0 4px 8px rgba($C-shadow, 1);
 $box-shadow:5px 5px 5px $C-shadow, -5px -5px 5px $C-white;
+$box-shadow-dark:5px 5px 5px rgba(18, 18, 18, 0.782), -5px -5px 5px rgba(255, 255, 255, 0.207);
 $btn-shadow:2px 2px 5px $C-shadow, -2px -2px 5px $C-white;
 $inner-shadow:inset 2px 2px 4px $C-shadow, inset -2px -2px 4px $C-white;
 
 //font
 $bazi: 'LongCang';
 $fortune-tell: 'Playwrite Australia NSW';
+
+
+$header-height: clamp(6.5rem, 1.857rem + 23.214vw, 13rem);
+

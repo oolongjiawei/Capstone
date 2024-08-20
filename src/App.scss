@@ -4,3 +4,15 @@
 @use './styles/partials/typography' as *;
 @use './styles/partials/variables' as *;
 @use "./styles/partials/mixin" as *;
+
+.app {
+    height: 100vh;
+    width: 100vw;
+    max-width: 128rem;
+    &__wrapper {
+        height: calc(100vh - #{$header-height});
+        @include tablet {
+            height: calc(100vh - #{$header-height-tablet});
+        }
+    }
+}

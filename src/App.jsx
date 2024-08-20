@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-// import Header from './components/Header/Header.jsx';
+import Header from './components/Header/Header.jsx';
 // import Footer from './components/Footer/Footer.jsx';
 // import HomePage from './components/HomePage/Homepage';
 
@@ -14,16 +14,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* <Header /> */}
-      <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/user/:userId" element={<UserPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-        {/* <Footer />   */}
-
+    <div className="app">
+        <Header />
+        <div className="app__wrapper">
+        <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/user/:userId" element={<UserPage />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+        </div>
+          {/* <Footer />   */}
+    </div>
     </BrowserRouter>
   );
 }

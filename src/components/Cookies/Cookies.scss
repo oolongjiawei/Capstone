@@ -1,4 +1,12 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
+
 // .cookies__all {
+//     display: flex;
 //   position: relative;
 //   width: 400px; 
 //   height: 400px;
@@ -15,3 +23,19 @@
 //     transform: scale(1.2);
 //   }
 // }
+
+.cookies-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.default-cookie-container,
+.daily-cookie-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+flex: 1;
+}

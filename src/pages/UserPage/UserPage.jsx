@@ -20,6 +20,14 @@ const UserPage = () => {
 
   const toggleSavedCookies = () => {
     setIsSavedCookiesVisible(!isSavedCookiesVisible);
+
+      // Scroll down
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: 'smooth'
+        });
+      }, 500); 
   };
   
   
@@ -98,30 +106,36 @@ const UserPage = () => {
   return (
     <div className="user-page">
         <div className="user-page__wrapper">
-          
-            <div className="cat__all" onClick={handleOpenModal}>
-              <img className='cat__own' src={catBlack} alt="fortune black cat" />
-              <div className="cat__seat">
-                <img src={catPat} alt="cat seat pat" />
-              </div>
-            </div>
 
+            <div className="user-page__wrapper">
+
+              <div className="cat">
+                <div className="cat__all" onClick={handleOpenModal}>
+                    <img className='cat__own' src={catBlack} alt="fortune black cat" />
+                    <div className="cat__seat">
+                      <img src={catPat} alt="cat seat pat" />
+                    </div>
+                </div>
+              </div>  
+
+            </div>
             <div className="cookies__all">
               <div className="cookie__generator">
                 <Cookies userId={userId}/>
               </div>
               <div className="cookies__collector">
-
-              <span className='cookies__collector--title'>Cookies Collection</span>
-                <img 
-                  className='cookies__img' 
-                  src={cookieNote}
-                  alt="cookies collector btn" 
-                  onClick={toggleSavedCookies} 
-                />
+                <div className="cookies__collector--wrapper">
+                  <span className='cookies__collector--title'>Cookies Collection</span>
+                    <img 
+                      className='cookies__img' 
+                      src={cookieNote}
+                      alt="cookies collector btn" 
+                      onClick={toggleSavedCookies} 
+                    />
+                </div>
+            
+                {isSavedCookiesVisible && <SavedCookies userId={userId} />} 
               </div>
-              
-              {isSavedCookiesVisible && <SavedCookies userId={userId} />} 
             </div>
         </div>
         <BaziInputModal

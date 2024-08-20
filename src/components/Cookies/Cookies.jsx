@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import DailyCookie from '../DailyCookie/DailyCookie';
 import DefaultCookie from '../DefaultCookie/DefaultCookie';
+import './Cookies.scss';
 
 const Cookies = () => {
   const [userId, setUserId] = useState(null);

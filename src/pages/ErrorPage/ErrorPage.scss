@@ -1,0 +1,27 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
+.error-page {
+    width: 100vw;
+    height: calc(100vh - #{$header-height});
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include tablet {
+        height: calc(100vh - #{$header-height-tablet});
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__text {
+        padding-top: 2rem;
+        text-align: center;
+    }
+}
+

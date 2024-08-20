@@ -1,5 +1,5 @@
 import "./ErrorPage.scss";
-// import xxx from "../../components/";
+import catBackB from "../../assets/images/cat-black-b.png";
 
 
 const ErrorPage = () => {
@@ -9,7 +9,12 @@ const ErrorPage = () => {
 
     return (
         <>
-           {/* <xxx /> */}
+        <div className="error-page">
+            <div className="error-page__wrapper">
+              <img src={catBackB} alt="black cat back" />
+            </div>
+            <h1 className="error-page__text">Ouch! Error...</h1>
+        </div>
         </>
     );
 };

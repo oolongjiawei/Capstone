@@ -1,0 +1,43 @@
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/typography' as *;
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
+.header {
+    display: flex;
+    width: 100vw;
+    height: $header-height;
+    justify-content: left;
+    border-bottom: none;
+    background-color: $C-black;
+    @include tablet {
+        border-bottom: 2px solid rgba($C-font, .4);
+        height: $header-height-tablet;
+        padding: 1.8rem;
+        justify-content: center;
+    }
+}
+.brand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(-1rem, -1.714rem + 3.571vw, 0rem);
+    padding-left: .5rem;
+    @include tablet {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    &-name {
+        font-family: 'PaytoneOne Regular';
+        color: $C-bg;
+        // text-shadow: $box-shadow;
+        line-height: clamp(2.8rem, 0.407rem + 11.964vw, 6.15rem);
+        font-size: clamp(3rem, -0.571rem + 17.857vw, 8rem);
+        text-shadow: none;
+        @include tablet {
+            font-size: $header-height-tablet;
+            text-shadow: $box-shadow-dark;
+        }
+    }
+}
