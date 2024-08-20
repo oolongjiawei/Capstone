@@ -41,6 +41,7 @@ Define database schema and seed initial data.
 
 + Implement Features
     + Fortune House: Implement calculation and display of fortune-telling data.
+    + Fortune House: Implement calculation and display of fortune-telling data.
     + User Management: Implement user registration, login, and profile management.
 
 + Bug Fixes
@@ -61,6 +62,11 @@ Deploy client and server projects to reflect commits in production.
 
 - Real time chat:
 Offer an online chat window service (scoket.io) to talk to the fortune teller, help you solve specific problem.
+- Deploy Projects
+Deploy client and server projects to reflect commits in production.
+
+- Real time chat:
+Offer an online chat window service (scoket.io) to talk to the fortune teller, help you solve specific problem.
 
 - Enhanced Suggestions: 
 Provide more detailed suggestions split by season.
@@ -73,11 +79,13 @@ Calculate and display the percentage of each element in the user's chart.
 
 - UI toggle button:
 Display different UI states for day and night, and give it a toggle button.
+Display different UI states for day and night, and give it a toggle button.
 
 - Google Calendar API update to integrate fortune reminders 
 
 - Integration with social media for sharing fortunes
 
+- show which celebrity share same birthday with u?
 - show which celebrity share same birthday with u?
 
 
