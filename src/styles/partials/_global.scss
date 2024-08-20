@@ -128,7 +128,7 @@ button {
     cursor: pointer;
     border: 1px solid transparent;
     width: 100%;
-    height: 5rem;
+    height: clamp(3rem, 1.571rem + 7.143vw, 5rem);
     border: $border-thick solid $C-border;
     border-radius: $btn-radius;
     background-color: $C-btn;
@@ -137,7 +137,7 @@ button {
     transition: border-color 0.3s;
     transition: background-color 0.3s;
     transition: transform 0.3s;
-    margin-top: 2rem;
+    margin-top: clamp(1rem, 0.286rem + 3.571vw, 2rem);
     &:hover {
       background-color: $C-btn-hover;
       border-color: $C-btn-hover;

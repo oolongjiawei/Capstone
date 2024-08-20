@@ -41,7 +41,8 @@
         justify-content: center;
         align-items: center;
         transform-origin: 50% 90%;
-        position: relative;
+        // position: relative;
+        position: relative; 
         min-width: 200px;
         z-index: 1; 
     
@@ -87,6 +88,32 @@
             100% {
                 transform: rotate(0.2deg);
             }
+        }
+    }
+}
+.cookies {
+    &__all {
+
+    }
+    &__collect {
+        position: relative;
+    }
+    &__collector {
+        filter: contrast(.9) ;
+        &:hover {
+            filter: brightness(1.06);
+            transform: scale(1.01);
+        }
+        &:active {
+            transform: scale(.98);
+        }
+
+        &--title {
+            font-weight: 800;
+            position: absolute;
+            transform: rotate(14deg);
+            top: 15.5rem;
+            left: 7rem;
         }
     }
 }
