@@ -1,12 +1,18 @@
 # FORTUNE HOUSE
-* Unlock Your Destiny Through the Four Pillars of Destiny *
+* Unlock Your Destiny Through the Four Pillars of Destiny
+
 
 ## Overview
-Fortune House is a web application designed to help users gain insights into themselves through detailed descriptions based on their date of birth and location, using the Four Pillars of Destiny. The platform provides users with personalized fortune-telling, daily fortune cookies, and the ability to manage their accounts for tracking fortunes over time. The application is accessible on both desktop and mobile devices, making it convenient for users seeking quick, personalized guidance.
+Fortune House is a web app that offers personalized insights based on your birth date and location using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortunes over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
 
-All you need is your intuition and focus, and a couple of taps or mouse clicks. Whether you are doing this just for fun or choose to believe in the high magic – ENJOY!
+## Usage
++ Clone or download the repository.
++ Navigate to the project directory.
++ Run 'npm install' to install the dependencies.
++ Run 'npm run dev' to start the app.
 
 ## Implementation
+
 ### Tech Stack
 + React
 + SASS
@@ -17,76 +23,52 @@ All you need is your intuition and focus, and a couple of taps or mouse clicks. 
     + react+router
     + axios
 + Server libraries:
-    + knex (firebase)
+    + knex 
     + express
-
-
+    + 
 ### Data
-+ User data: Encrypted storage of personal information
-+ Fortune data: Database of 60 Jia-Zi characteristics and corresponding suggestions
-+ Data of fortune cookie sentences for random selection.
++ Fortune Telling: Calculate and display personalized fortune data.
++ User Management: Register, log in, and manage profiles.
++ Fortune Cookies: Daily and random fortune cookie messages.
 
 
 ## Roadmap
 
-+ Create Client
-Set up React project with routes and boilerplate pages.
+### Create Client
++ Set up React project with routes.
 
-+ Create Server
-Set up Express project with routing and placeholder 
-responses.
+### Create Server: 
++ Set up Express project with routing.
 
-+ Create Migrations
-Define database schema and seed initial data.
+### Create Migrations: 
++ Define database schema and seed initial data.
 
-+ Implement Features
-    + Fortune House: Implement calculation and display of fortune-telling data.
-    + Fortune House: Implement calculation and display of fortune-telling data.
-    + User Management: Implement user registration, login, and profile management.
+### Implement Features: 
++ Fortune calculation and display.
++ User registration and profile management.
++ Fortune cookies.
 
-+ Bug Fixes
-Address any issues that arise during development and testing.
+### Bug Fixes: 
++ Address any issues that arise during development and testing.
 
-+ Implement responsive ui design
-Add animations and transitions
-Conduct usability testing and gather feedback
-update readme.md
+### UI Design: 
++ Implement responsive design with animations.
 
-+ DEMO DAY
+### Bug Fixes: 
++ Address issues during development.
+
+### DEMO DAY
++ Finalize project for presentation.
 
 
-## Nice+to+haves
+## Nice to haves
 
-- Deploy Projects
-Deploy client and server projects to reflect commits in production.
-
-- Real time chat:
-Offer an online chat window service (scoket.io) to talk to the fortune teller, help you solve specific problem.
-- Deploy Projects
-Deploy client and server projects to reflect commits in production.
-
-- Real time chat:
-Offer an online chat window service (scoket.io) to talk to the fortune teller, help you solve specific problem.
-
-- Enhanced Suggestions: 
-Provide more detailed suggestions split by season.
-
-- True Solar Time: 
-Incorporate true solar time for more accurate calculations.
-
-- Element Percentage: 
-Calculate and display the percentage of each element in the user's chart.
-
-- UI toggle button:
-Display different UI states for day and night, and give it a toggle button.
-Display different UI states for day and night, and give it a toggle button.
-
-- Google Calendar API update to integrate fortune reminders 
-
-- Integration with social media for sharing fortunes
-
-- show which celebrity share same birthday with u?
-- show which celebrity share same birthday with u?
++ Enhanced Suggestions: Provide detailed seasonal insights.
++ True Solar Time: Integrate true solar time for accurate predictions.
++ Element Percentage: Show element distribution in charts.
++ UI Toggle: Day/Night mode with a toggle button.
++ Google Calendar Integration: Add fortune reminders.
++ Social Media Integration: Enable sharing of fortunes.
 
 
 ## Authors and Acknowledgments
@@ -98,5 +80,3 @@ The project was developed by:
 ## License
 
 This project is open-source and intended for personal learning and training purposes only. Commercial use is not permitted.
-
-
