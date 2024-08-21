@@ -25,7 +25,7 @@ Fortune House is a web app that offers personalized insights based on your birth
 + Server libraries:
     + knex 
     + express
-    + 
+      
 ### Data
 + Fortune Telling: Calculate and display personalized fortune data.
 + User Management: Register, log in, and manage profiles.
