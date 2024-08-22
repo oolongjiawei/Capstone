@@ -3,7 +3,7 @@
 
 
 ## Overview
-Fortune House is a web app that offers personalized insights based on your birth date using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortunes over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
+Fortune House is a web app that offers personalized insights based on your birth date using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortune cookies over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
 
 ## Usage
 + Clone or download the repository.
