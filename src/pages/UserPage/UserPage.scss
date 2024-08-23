@@ -13,7 +13,7 @@
     height: calc(100vh - #{$header-height});
     &__master {
         display:flex;
-        justify-content: center;
+        // justify-content: center;
         flex-direction: column;  
     }
 
@@ -40,7 +40,6 @@
     }
     
     &__all {
-       
         position:relative;
         z-index: 2;
         display: flex;
