@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import DailyCookie from '../DailyCookie/DailyCookie';
+// import DailyCookie from '../DailyCookie/DailyCookie';
 import DefaultCookie from '../DefaultCookie/DefaultCookie';
 import './Cookies.scss';
 
@@ -20,10 +20,17 @@ const Cookies = () => {
   }
 
   return (
+
+    
     <div className="cookies-container">
-      <DailyCookie userId={userId} />
+      
+      {/* <DailyCookie userId={userId} /> */}
       <DefaultCookie userId={userId} />
+
     </div>
+
+    
+
   );
 };
 

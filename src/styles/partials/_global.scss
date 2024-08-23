@@ -1,6 +1,6 @@
+@use './variables' as *;
 @use './breakpoints'as *;
 @use './typography'as *;
-@use './variables' as *;
 @use './font' as *;
 
 html {
@@ -14,7 +14,6 @@ html {
     &:focus {         
         outline: none;
     }
-    // color-scheme: light dark;
  }
 *, 
 *:before,
@@ -33,8 +32,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Jost', 'LongCang', 'Open Sans', sans-serif;
-    // color: $black;
-    background-color: $C-bg; 
+    background-color: var(--color-bg); 
     pointer-events: auto;
 }
 h1,
@@ -52,9 +50,8 @@ a {
     margin: 0;
     list-style: none;
     text-decoration: none;
-    // color: $C-black;
     text-align: left;
-    color: $C-font;
+    color: var(--color-font); 
 }
 
 textarea {
@@ -71,7 +68,7 @@ input {
     width: 100%;
     border-radius: $border-radious;
     box-shadow: $inner-shadow;
-    border: $border-thick solid $C-border;
+    border: $border-thick solid var(--color-border); ;
     outline: none;
     background-repeat: no-repeat;
     background-position: 1rem 50%;
@@ -83,16 +80,16 @@ input {
         display: flex;
     }
     &:active {
-    border-color: $C-border-hover;
+        border-color: var(--color-border-hover); 
     }
     &:focus {
-        border-color: $C-border-hover !important;
+        border-color: var(--color-border-hover) !important;
         outline: none;
     }
     @keyframes fadeInvalid {
         0%, 100% {
-          border-color: $C-red;
-          color: $C-red;
+          border-color: var(--color-red); 
+          color: var(--color-red); 
           opacity: 1;
         }
         50% {
@@ -102,14 +99,14 @@ input {
         }
       }
     &:invalid { 
-        border-color: $C-red !important;
+        border-color: var(--color-red)  !important;
         outline: none;
-        color: $C-red ;
+        color: var(--color-red);
         animation: fadeInvalid 1.5s infinite;
 
     }
     &::placeholder {
-        color: #bcbaba;
+        color: var(--color-font-placeholder);
     }
 }
 button {
@@ -124,30 +121,31 @@ button {
     border: 1px solid transparent;
     width: 100%;
     height: clamp(3rem, 1.571rem + 7.143vw, 5rem);
-    border: $border-thick solid $C-border;
+    border: $border-thick solid var(--color-border); ;
     border-radius: $btn-radius;
-    background-color: $C-btn;
-    color: $C-font;
+    background-color: var(--color-btn); 
+    color: var(--color-btn-font); 
     box-shadow: $btn-shadow;
+
     transition: border-color 0.3s;
     transition: background-color 0.3s;
     transition: transform 0.3s;
     margin-top: clamp(1rem, 0.286rem + 3.571vw, 2rem);
     &:hover {
-      background-color: $C-btn-hover;
-      border-color: $C-btn-hover;
-      color: $C-btn;
+      background-color: var(--color-btn-hover); 
+    //   border-color: var(--color-btn-hover); 
+      color: var(--color-font); 
       transform: scale(1.02);
     }
     &:active {
-        border-color: $C-btn-active;
-        background-color: $C-btn-active;
+        border-color: var(--color-btn-active); 
+        background-color: var(--color-btn-active); 
         transform: scale(1);
     }
   }
 a {
     &:hover {
-      color: $C-font-hover;
+      color: var(--color-font-hover); 
     }
   }
 img {
@@ -162,7 +160,7 @@ img {
     border-radius: 50%;
     object-fit: cover;
     object-position: 15% 50%;
-    background-color: $C-black;
+    background-color: var(--color-black); 
     @include tablet {
         min-width: 4.8rem;
         height: 4.8rem;
@@ -172,33 +170,7 @@ img {
         height: 4.8rem;    
     } 
 };
-.logo {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    img {
-    width: 40px;
-    height: 40px;
-    // border-radius: 50%;
-    // box-shadow: $box-shadow;
-    transform-origin: 50% 50%;
-    will-change: transform, filter; 
-    animation: logo-spin infinite 20s linear; 
-    transform: rotate(360deg);
-    }
-    &:hover {
-      filter: drop-shadow(0 0 2rem #671458cc);
-    }
-    
-    @keyframes logo-spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-}
+
 .card {
     display: flex;
     justify-content: center;
@@ -216,29 +188,29 @@ form {
 }
 .error-message {
   margin: 1rem 0;
-  color: $C-white; 
+  color: var(--color-white); 
   padding: .4rem 2rem 0rem; 
   border-radius: 1rem;
-  background-color: $C-red;
+  background-color: var(--color-red); 
   position: relative;
   margin-top: 10px;
   display: inline-block; 
 }
-// .grow {
-//     transition: transform 1s;
-//     will-change: scale;
-//     &:hover {
-//         transform: scale(1.2);
-//       }
-//   }
-//   .fade {
-//     opacity: 0.5;
-//     transition: opacity 1s;
-//     will-change: opacity;
-//     &:hover {
-//         opacity: 1;
-//       }
-//   }
+.grow {
+    transition: transform 1s;
+    will-change: scale;
+    &:hover {
+        transform: scale(1.2);
+      }
+}
+  .fade {
+    opacity: 1;
+    transition: opacity 1s;
+    will-change: opacity;
+    &:hover {
+        opacity: 0;
+      }
+  }
 
   
  

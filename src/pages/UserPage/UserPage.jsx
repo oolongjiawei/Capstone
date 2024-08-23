@@ -3,31 +3,21 @@ import { useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import BaziInputModal from '../../components/BaziInputModal/BaziInputModal';
 import BaziResultModal from '../../components/BaziResultModal/BaziResultModal';
-import Cookies from '../../components/Cookies/Cookies'; 
-import SavedCookies from '../../components/SavedCookies/SavedCookies';
 import axios from 'axios';
 import catBlack from "../../assets/images/cat-black.png";
-// import catWhite from "../../assets/images/cat-white.png";
+import catWhite from "../../assets/images/cat-white.png";
 import catPat from "../../assets/images/cat-pat.png";
-import cookieNote from "../../assets/images/cookie-note.png";
+import Header from '../../components/Header/Header.jsx';
 
 
 const UserPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [baziData, setBaziData] = useState(null); 
   const [isBaziPopupOpen, setIsBaziPopupOpen] = useState(false); 
-  const [isSavedCookiesVisible, setIsSavedCookiesVisible] = useState(false);
+  const [currentCatImage, setCurrentCatImage] = useState(catBlack);
 
-  const toggleSavedCookies = () => {
-    setIsSavedCookiesVisible(!isSavedCookiesVisible);
-
-      // Scroll down
-      setTimeout(() => {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: 'smooth'
-        });
-      }, 500); 
+  const toggleCatImage = () => {
+    setCurrentCatImage(prevImage => prevImage === catBlack ? catWhite : catBlack);
   };
   
   
@@ -77,9 +67,6 @@ const UserPage = () => {
       console.error('User ID is missing.');
         return;
   }
-
-
-  
     try {
       const response = await axios.post('http://localhost:8080/api/fortune/bazi', {
         birthYear: baziData.birth_year,  
@@ -102,41 +89,27 @@ const UserPage = () => {
   };
 
   const userId = localStorage.getItem('userId'); 
+  console.log("UserPage User ID:", userId);
 
   return (
+    <div className='user-page__master'>
+    <Header onLogoClick={toggleCatImage} />
     <div className="user-page">
+     
         <div className="user-page__wrapper">
-
-            <div className="user-page__wrapper">
 
               <div className="cat">
                 <div className="cat__all" onClick={handleOpenModal}>
-                    <img className='cat__own' src={catBlack} alt="fortune black cat" />
+
+                    <img className='cat__own' src={currentCatImage} alt="fortune cat" />
+
                     <div className="cat__seat">
                       <img src={catPat} alt="cat seat pat" />
                     </div>
                 </div>
               </div>  
 
-            </div>
-            <div className="cookies__all">
-              <div className="cookie__generator">
-                <Cookies userId={userId}/>
-              </div>
-              <div className="cookies__collector">
-                <div className="cookies__collector--wrapper">
-                  <span className='cookies__collector--title'>Cookies Collection</span>
-                    <img 
-                      className='cookies__img' 
-                      src={cookieNote}
-                      alt="cookies collector btn" 
-                      onClick={toggleSavedCookies} 
-                    />
-                </div>
-            
-                {isSavedCookiesVisible && <SavedCookies userId={userId} />} 
-              </div>
-            </div>
+          
         </div>
         <BaziInputModal
             isOpen={isModalOpen}
@@ -150,6 +123,7 @@ const UserPage = () => {
             onSave={handleSaveBazi}
             onRegenerate={handleRegenerateBazi}
         />
+    </div>
     </div>
   );
 };

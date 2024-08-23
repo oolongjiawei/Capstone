@@ -1,43 +1,133 @@
-@use '../../styles/partials/breakpoints' as *;
-@use '../../styles/partials/font' as *;
-@use '../../styles/partials/global' as *;
-@use '../../styles/partials/typography' as *;
 @use '../../styles/partials/variables' as *;
 @use "../../styles/partials/mixin" as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/typography' as *;
+
 .header {
+    background-color: var(--C-bg);
+    // height: $header-height;
     display: flex;
     width: 100vw;
-    height: $header-height;
+    width: auto;
     justify-content: left;
+    flex-direction: row;
+    flex-direction: column;
     border-bottom: none;
-    background-color: $C-black;
+    padding: 1rem;
+
     @include tablet {
-        border-bottom: 2px solid rgba($C-font, .4);
-        height: $header-height-tablet;
+        // border-bottom: 1px solid rgba(var(--color-font), .4);
+        // height: $header-height-tablet;
         padding: 1.8rem;
         justify-content: center;
+        flex-direction: column;
     }
+    &__wrapper {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        @include mid {
+            // border-bottom: 1px solid rgba(var(--color-font), .4);
+            // height: $header-height-tablet;
+            // padding: 1.8rem;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        @include tablet {
+            // border-bottom: 1px solid rgba(var(--color-font), .4);
+            // height: $header-height-tablet;
+            // padding: 1.8rem;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    }
+    &__logo {
+        width: 100%;
+        height: $header-height;
+        display: flex;
+        justify-content: left;
+        // max-width: 10rem;
+        // width: 10rem;
+        @include tablet {
+            border-bottom: 1px solid rgba(var(--color-font), .4);
+            height: $header-height-tablet;
+            justify-content: center;
+        }
+    }
+    &__nav {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+        gap:2rem;
+        flex: 1;
+        padding: 1.5 2rem;
+        padding-top: 2rem;
+        @include mid{
+            padding: 1.5 2rem;
+            flex-direction: row;
+        }
+    }
+    
 }
 .brand {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     gap: clamp(-1rem, -1.714rem + 3.571vw, 0rem);
     padding-left: .5rem;
-    @include tablet {
+    height: 8rem;
+    @include mid {
         flex-direction: row;
+        padding-left: 0rem;
+        // flex-direction: column;
         gap: 1rem;
     }
-    &-name {
+    &__name {
         font-family: 'PaytoneOne Regular';
-        color: $C-bg;
-        // text-shadow: $box-shadow;
+        color: var(--color-logo);
         line-height: clamp(2.8rem, 0.407rem + 11.964vw, 6.15rem);
         font-size: clamp(3rem, -0.571rem + 17.857vw, 8rem);
-        text-shadow: none;
-        @include tablet {
-            font-size: $header-height-tablet;
-            text-shadow: $box-shadow-dark;
+        text-shadow: $logo-shadow;
+        @include mid {
+            font-size: clamp(8rem, calc(8rem + (2rem * ((100vw - 544px) / 225))), 10rem);
+       
         }
+        @include tablet {
+            font-size:10rem;
+        }
+      
+
+    }
+}
+
+
+.nav-link {
+    color: var(--color-font-hover);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: clamp(1.4rem, 0.543rem + 4.286vw, 2rem);
+    line-height: clamp(1.5rem, 0.5rem + 5vw, 2.2rem);
+    box-shadow: $btn-shadow;
+    padding: .5rem 2rem;
+    margin: 0 2rem;
+    border-radius: 2rem;
+    background-color: var(--color-bg);
+    width: auto;
+    &:hover {
+        transform: scale(1.02);
+    }
+    @include mid {
+        font-size: 2rem;
+        margin: 0rem;
+        
+    }
+    @include tablet {
+        font-size: clamp(1.6rem, -0.4rem + 10vw, 3rem);
     }
 }

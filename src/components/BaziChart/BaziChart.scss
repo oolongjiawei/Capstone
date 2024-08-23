@@ -1,0 +1,41 @@
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/typography' as *;
+
+.bazi-chart {
+    margin: clamp(1rem, 0.286rem + 3.571vw, 2rem) auto;
+    text-align: center;
+  }
+  
+  .bazi-chart__table {
+    width: 100%;
+    border-collapse: collapse;
+    // font-size: 16px;
+    color: #333;
+    font-size:clamp(1rem, 0rem + 5vw, 2.4rem);
+    // @include tablet {
+      
+    // }
+
+  
+    th, td {
+      padding: clamp(0rem, -0.714rem + 3.571vw, 1rem);
+      
+      border: 1px solid #ccc;
+    }
+  
+    th {
+      background-color: #f5f5f5;
+    }
+  
+    td {
+      background-color: #fff;
+      .main_column {
+        background-color: aqua;
+      }
+    }
+  }
+  

@@ -1,17 +1,79 @@
-// .cookies__all {
-//   position: relative;
-//   width: 400px; 
-//   height: 400px;
-//   margin: 0 auto;
-// }
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/typography' as *;
 
-// .fortune-cookie__image {
-//   position: absolute;
-//   width: 50px;
-//   height: 50px; 
-//   cursor: pointer;
-//   transform-origin: center center;
-//   &:hover {
-//     transform: scale(1.2);
-//   }
-// }
+
+
+.default-cookie {
+  &__container {
+
+    width: 100%;
+    display: flex;
+   flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    text-align: center;
+
+  }
+  &__image {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotate(120deg);
+    width: 15rem;
+    height: 15rem;
+    cursor: pointer;
+    transition: filter 0.3s ease;
+  
+    &.greyscale {
+      filter: grayscale(100%);
+      // cursor: not-allowed;
+    }
+    &:hover {
+      transform: scale(1.02);
+      transform: rotate(130deg);
+    }
+  }
+  &--wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 18rem;
+    width: 18rem;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: $inner-shadow;
+
+  }
+  &__label {
+    padding: 1rem 4rem;
+    background-color: rgb(238, 231, 168);
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+    border-radius: 2rem 0;
+  }
+  &__buttons {
+    display: flex;
+    gap:1rem;
+    width: 100%;
+    padding: 1rem;
+  }
+  &__button {
+    &-save {
+
+      display: flex;
+      flex: 1;
+    }
+    &-cancel {
+      display: flex;
+      flex: 1;
+    }
+  }
+  }

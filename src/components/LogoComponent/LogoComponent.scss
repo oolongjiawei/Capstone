@@ -1,0 +1,43 @@
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/typography' as *;
+
+.logo-default {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    cursor: pointer;
+    img {
+        min-width: 6rem;
+        width: clamp(5.6rem, -4.971rem + 52.857vw, 13rem);
+        transform-origin: 50% 50%;
+        animation: logo-spin infinite 20s linear;
+        will-change: rotate, scale, filter;  
+        transform: rotate(360deg);
+        transition: transform 1s;
+        &:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 2rem var(--color-logo));
+        }
+        @include mid {
+            max-width: 13rem;
+        }
+        @include tablet{
+            max-width: 15rem;
+        }
+    }
+   
+    @keyframes logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+    }
+
+}
+  

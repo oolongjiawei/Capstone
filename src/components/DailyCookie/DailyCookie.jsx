@@ -5,7 +5,7 @@ import cookieImage from '../../assets/images/cookie.png';
 
 const DailyCookie = ({ userId }) => {
   const [fortuneMessage, setFortuneMessage] = useState('');
-  const [fortuneId, setFortuneId] = useState(null); // 新增：存储生成的 cookie 的 ID
+  const [fortuneId, setFortuneId] = useState(null); 
   const [isCookieGenerated, setIsCookieGenerated] = useState(false);
   const [isSaveButtonVisible, setIsSaveButtonVisible] = useState(false);
 
@@ -15,7 +15,7 @@ const DailyCookie = ({ userId }) => {
         const response = await axios.get(`http://localhost:8080/api/fortune/user/${userId}/daily-cookie`);
         if (response.data.fortune) {
           setFortuneMessage(response.data.fortune);
-          setFortuneId(response.data.id); // 新增：获取已生成的 cookie 的 ID
+          setFortuneId(response.data.id); 
           setIsCookieGenerated(true); 
           setIsSaveButtonVisible(false); 
         }
@@ -49,8 +49,8 @@ const DailyCookie = ({ userId }) => {
     try {
       await axios.post('http://localhost:8080/api/fortune/cookie', {
         userId: userId,
-        cookieId: fortuneId, // 保存时使用生成的 cookie ID
-        save: true, 
+        cookieId: fortuneId, 
+        save: true,
       });
       console.log('Fortune Cookie saved successfully');
       setIsSaveButtonVisible(false); 
@@ -64,21 +64,21 @@ const DailyCookie = ({ userId }) => {
   };
 
   return (
-    <div className="daily-cookie-container">
+    <div className="daily-cookie__container">
       <img
         src={cookieImage}
         alt="Daily Cookie"
         onClick={handleGenerateFortuneCookie}
-        className={`cookie-image ${isCookieGenerated ? 'greyscale' : ''}`}
+        className={`daily-cookie__image ${isCookieGenerated ? 'greyscale' : ''}`}
         disabled={isCookieGenerated}
       />
-      {fortuneMessage && <p>Your Daily Fortune: {fortuneMessage}</p>}
+      {fortuneMessage && <p className='daily-cookie__label'><span>Your Daily Fortune:</span><br/> {fortuneMessage}</p>}
       {isSaveButtonVisible && (
-        <div className="button-group">
-          <button onClick={handleSaveFortuneCookie} className="save-button">
+        <div className="daily-cookie__buttons">
+          <button onClick={handleSaveFortuneCookie} className="daily-cookie__button-save">
             Save
           </button>
-          <button onClick={handleCancelFortuneCookie} className="cancel-button">
+          <button onClick={handleCancelFortuneCookie} className="daily-cookie__button-cancel">
             Exit
           </button>
         </div>

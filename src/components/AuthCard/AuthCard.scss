@@ -1,8 +1,10 @@
+@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixin" as *;
+@use '../../styles/partials/global' as *;
 @use '../../styles/partials/breakpoints' as *;
 @use '../../styles/partials/font' as *;
-@use '../../styles/partials/global' as *;
 @use '../../styles/partials/typography' as *;
-@use '../../styles/partials/variables' as *;
+
 
 
 .input__container.username, .input__container.confirm-password {
@@ -29,6 +31,9 @@
       justify-content: center;
       align-items: center;
   }
+  &__title {
+    text-align: center;
+  }
   &__username{
     background-image: url("../../assets/icons/face.svg");
   }
@@ -42,6 +47,8 @@
     padding: 1rem 1rem 1rem 4rem;
   }
   &__card {
+    background-color: var(--color-bg);
+
     box-shadow: $box-shadow;
     display: flex;
     justify-content: center;
@@ -49,19 +56,7 @@
     align-items: center;
     width: clamp(28rem, 19.429rem + 42.857vw, 40rem);
     padding: 30px;
-    .logo {
-      display: flex;
-      justify-content: center;
-        margin-bottom: 20px;
-        img {
-        // border-radius: 50%;
-        width: 90px;
-        height: 90px;
-        object-fit: cover;
-        object-position: 50% 50%;
-        filter: drop-shadow(1rem 1rem 0rem $box-shadow);
-        }
-    }
+ 
     .signup-or-login__link {
         margin-top: 20px;
         a {
@@ -73,5 +68,8 @@
   }
   &__header {
     margin-bottom: 2rem;
+    &--logo {
+      margin-bottom: 2rem;
+    }
   }
 }

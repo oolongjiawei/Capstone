@@ -5,8 +5,9 @@ import cookieImage from '../../assets/images/cookie.png';
 
 const DefaultCookie = ({ userId }) => {
   const [fortuneMessage, setFortuneMessage] = useState('');
-  const [generatedCookieId, setGeneratedCookieId] = useState(null); // 保存生成的cookieId
+  const [generatedCookieId, setGeneratedCookieId] = useState(null); 
   const [isSaveButtonVisible, setIsSaveButtonVisible] = useState(false);
+
 
   const handleGenerateFortuneCookie = async () => {
     try {
@@ -16,8 +17,11 @@ const DefaultCookie = ({ userId }) => {
       });
       console.log('Generated Fortune Cookie:', response.data.fortune);
       setFortuneMessage(response.data.fortune);
-      setGeneratedCookieId(response.data.id); // 保存生成的cookieId
+      setGeneratedCookieId(response.data.id); 
       setIsSaveButtonVisible(true); 
+
+
+
     } catch (error) {
       console.error('Error generating Fortune Cookie:', error.response ? error.response.data : error.message);
     }
@@ -27,11 +31,12 @@ const DefaultCookie = ({ userId }) => {
     try {
       await axios.post('http://localhost:8080/api/fortune/cookie', {
         userId: userId,
-        cookieId: generatedCookieId, // 使用生成时返回的cookieId
-        save: true, 
+        cookieId: generatedCookieId, 
+        save: true ,
       });
       console.log('Fortune Cookie saved successfully');
       setIsSaveButtonVisible(false); 
+
     } catch (error) {
       console.error('Error saving Fortune Cookie:', error.response ? error.response.data : error.message);
     }
@@ -39,23 +44,28 @@ const DefaultCookie = ({ userId }) => {
 
   const handleCancelFortuneCookie = () => {
     setIsSaveButtonVisible(false); 
+
   };
 
   return (
     <div className="default-cookie-container">
+
+      <div className="default-cookie--wrap">
       <img
         src={cookieImage}
         alt="Fortune Cookie"
         onClick={handleGenerateFortuneCookie}
-        className="cookie-image"
+        className="default-cookie__image"
       />
-      {fortuneMessage && <p>Your Fortune: {fortuneMessage}</p>}
+      </div>
+      {/* <span className='daily-cookie__title'>Open Your Daily Fortune Cookies</span> */}
+      {fortuneMessage && <p className='default-cookie__label'><span>Your Daily Fortune:</span><br/> {fortuneMessage}</p>}
       {isSaveButtonVisible && (
-        <div className="button-group">
-          <button onClick={handleSaveFortuneCookie} className="save-button">
+        <div className="default-cookie__buttons">
+          <button onClick={handleSaveFortuneCookie} className="default-cookie__button-save">
             Save
           </button>
-          <button onClick={handleCancelFortuneCookie} className="cancel-button">
+          <button onClick={handleCancelFortuneCookie} className="default-cookie__button-cancel">
             Exit
           </button>
         </div>

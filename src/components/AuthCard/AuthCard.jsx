@@ -2,16 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./AuthCard.scss";
 import { useNavigate } from "react-router-dom";
+import LogoComponent from '../LogoComponent/LogoComponent'; 
 
 const AuthCard = ({ type }) => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (type !== "login" && type !== "register") {
-      console.error("Invalid type prop. Expected 'login' or 'register'.");
-      return;
-    }
-  }, [type]);
 
   const isRegister = type === "register";
 
@@ -21,7 +16,29 @@ const AuthCard = ({ type }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  const [isRequired, setIsRequired] = useState(false); // 动态控制 required 属性
+  const [isRequired, setIsRequired] = useState(false); 
+  const [apodImageUrl, setApodImageUrl] = useState(""); 
+
+  useEffect(() => {
+    if (type !== "login" && type !== "register") {
+      console.error("Invalid type prop. Expected 'login' or 'register'.");
+      return;
+    }
+  
+    // Fetch APOD image
+    const fetchApodImage = async () => {
+      try {
+        const response = await axios.get(
+          "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY"
+        );
+        setApodImageUrl(response.data.hdurl); // 存储图像 URL
+      } catch (err) {
+        console.error("Error fetching APOD image:", err);
+      }
+    };
+  
+    fetchApodImage();
+  }, [type]); 
 
   const validateForm = () => {
     if (!email || !password || (isRegister && !username)) {
@@ -40,7 +57,7 @@ const AuthCard = ({ type }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setHasSubmitted(true);
-    setIsRequired(true);  // 提交表单后，才将 `required` 属性设为 `true`
+    setIsRequired(true);  
 
     if (!validateForm()) {
       return;
@@ -52,8 +69,16 @@ const AuthCard = ({ type }) => {
       console.log(`${isRegister ? "Registration" : "Login"} successful`, response.data);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem('userId', response.data.userId);
+      localStorage.setItem('username', response.data.username);
 
-      console.log('Login successful, user ID:', response.data.userId);
+      console.log('Login successful, username:', response.data.username);
+      setTimeout(() => {
+        if (response.data.userId) {
+          navigate(`/user/${response.data.userId}`);
+        } else {
+          console.error("User ID is missing in the response");
+        }
+      }, 500);
 
       if (response.data.userId) {
         navigate(`/user/${response.data.userId}`);
@@ -66,13 +91,17 @@ const AuthCard = ({ type }) => {
   };
 
   return (
-    <div className="auth__container">
+    // <div className="auth__container">
+    <div 
+      className="auth__container"
+      style={{ backgroundImage: `url(${apodImageUrl})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} // 设置背景图像
+    >
       <div className="auth__card card">
         <div className="auth__header">
-          <div className="logo">
-            <img src="../../src/assets/images/logo.png" alt="Logo" />
+          <div className="auth__header--logo">
+            <LogoComponent />
           </div>
-          <h1>{isRegister ? "Sign Up" : "Log In"}</h1>
+          <h1 className="auth__title">{isRegister ? "Sign Up" : "Log In"}</h1>
           <span>{isRegister ? "Create an account!" : "Welcome back!"}</span>
         </div>  
         {error && <p className="error-message">{error}</p>}

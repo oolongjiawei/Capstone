@@ -4,10 +4,10 @@ import deleteIcon from "../../assets/icons/close.svg";
 import simleFaceIcon from "../../assets/icons/smile-face.svg";
 import "./SavedCookies.scss";
 
+
 const SavedCookies = ({ userId }) => {
   const [savedCookies, setSavedCookies] = useState([]);
   const [error, setError] = useState("");
-  // const [rotationAngles, setRotationAngles] = useState({}); 
   
 
   useEffect(() => {
@@ -17,12 +17,6 @@ const SavedCookies = ({ userId }) => {
           `http://localhost:8080/api/fortune/user/${userId}/saved-cookies`
         );
         setSavedCookies(response.data);
-        // gener angle for each cookie
-        // const angles = {};
-        // response.data.forEach((cookie) => {
-        //   angles[cookie.cookie_id] = generateRandomRotation(-10, 10);
-        // });
-        // setRotationAngles(angles);
 
         fetchSavedCookies();
       } catch (error) {
@@ -56,8 +50,6 @@ const SavedCookies = ({ userId }) => {
     }
   };
 
-  // const generateRandomRotation = (minAngle, maxAngle) => 
-  //   Math.floor(Math.random() * (maxAngle - minAngle + 1)) + minAngle;
 
   return (
     <div className="saved-cookies">
@@ -77,9 +69,7 @@ const SavedCookies = ({ userId }) => {
                         <p className="saved-cookie__message">
                             {cookie.cookie_message}
                         </p>
-                        <small className="saved-cookie__date"
-                          // style={{ transform: `rotate(${rotationAngles[cookie.cookie_id] || 0}deg)` }} 
-                        >
+                        <small className="saved-cookie__date">
                             {new Date(cookie.created_at).toLocaleDateString()}
                         </small>
                     </div>

@@ -1,9 +1,10 @@
-@use '../../styles/partials/breakpoints' as *;
-@use '../../styles/partials/font' as *;
-@use '../../styles/partials/global' as *;
-@use '../../styles/partials/typography' as *;
 @use '../../styles/partials/variables' as *;
 @use "../../styles/partials/mixin" as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/typography' as *;
+
 
 .bazi-result {
   @include popup-styles;
@@ -29,16 +30,13 @@
       margin-top: 2rem;
       text-align: left;
       font-size: 120%;
-      color:$C-red;
-      // text-shadow: #FC0 1px 0 5px;
-      background-color: $C-btn-hover;
+      color:var(--color-red);
+      background-color: var(--color-btn-hover);
       box-shadow: $box-shadow;
     }
     &--day {
-      color: $C-red;
-      // text-shadow: #FC0 1px 0 5px;
-      // font-size: 150%;
-      background-color:  $C-btn-hover;
+      color: var(--color-red);
+      background-color:  var(--color-btn-hover);
       padding: 1rem .5rem .5rem;
 
     }

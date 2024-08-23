@@ -1,48 +1,55 @@
-@use '../../styles/partials/breakpoints' as *;
-@use '../../styles/partials/font' as *;
-@use '../../styles/partials/global' as *;
-@use '../../styles/partials/typography' as *;
 @use '../../styles/partials/variables' as *;
 @use "../../styles/partials/mixin" as *;
+@use '../../styles/partials/global' as *;
+@use '../../styles/partials/breakpoints' as *;
+@use '../../styles/partials/font' as *;
+@use '../../styles/partials/typography' as *;
 
 .user-page {
-    width: 100vw;
     display:flex;
     justify-content: center;
-    align-items: center;
-    &__wrapper {
-        display:flex;
-        justify-content: center;
-    }
-    &__wrapper {
-        display:flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-}
-.cat {
+    // align-items: center;
+    width: 100vw;
     height: calc(100vh - #{$header-height});
+    &__master {
+        display:flex;
+        justify-content: center;
+        flex-direction: column;  
+    }
+
     @include tablet {
         height: calc(100vh - #{$header-height-tablet});
     }
+    &__wrapper {
+        display:flex;
+        justify-content: center;
+        // align-items: center;   
+        flex-direction: column;
+    }
+}
+
+.cat {
+    height: calc(100vh - #{$header-height});
     border-bottom: $divider;
     display:flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     flex-direction: column;
+    @include tablet {
+        height: calc(100vh - #{$header-height-tablet});
+    }
+    
     &__all {
        
         position:relative;
         z-index: 2;
         display: flex;
         justify-content: center;
-        align-items: center;
-    
+        // align-items: center;
         // Hover effect for the entire container
         &:hover {
             .cat__own {
-                filter: drop-shadow(0 0.2rem 0.8rem $C-obj-cat-rimLight) brightness(130%);
+                filter: drop-shadow(0 0.2rem 0.8rem var(--color-obj-cat-rimLight)) brightness(130%);
                 animation: rotate 0.5s ease-in-out infinite;
             }
             .cat__seat {
@@ -55,13 +62,12 @@
     &__own {
         display: flex;
         justify-content: center;
-        align-items: center;
+        // align-items: center;
         transform-origin: 50% 90%;
         // position: relative;
         position: relative; 
         min-width: 200px;
         z-index: 1; 
-    
         filter: none;
         transition: filter 0.3s ease-in-out;
         animation: none;
@@ -82,7 +88,7 @@
     &__seat {
         position: absolute; 
         transform-origin: 50% 50%;
-        top: 195px;
+        top: 200px;
         right: -28px;
         width: 250px;
         height: auto;
@@ -106,39 +112,4 @@
             }
         }
     }
-}
-.cookies {
-    &__all {
-
-    }
-    &__collect {
-        position: relative;
-    }
-    &__collector {
-
-        &--wrapper {
-            filter: contrast(.9) ;
-            &:hover {
-                filter: brightness(1.06);
-                transform: scale(1.01);
-            }
-            &:active {
-                transform: scale(.98);
-            }
-        }
-        &--title {
-            font-weight: 800;
-            position: absolute;
-            transform: rotate(14deg);
-            top: 15.5rem;
-            left: 7rem;
-        }
-    }
-}
-.cookie__generator {
-    // background-color: aqua;
-    border-bottom: $divider;
-    display:flex;
-    justify-content: center;
-    align-items: center;
 }

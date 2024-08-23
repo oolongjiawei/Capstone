@@ -1,61 +1,128 @@
-//------------------------colorPalette:
-//Primary colors
-$C-black: #302222; //  Global text color
-$C-white: #ffffff; // Global white color-highlight
-$C-red: #dc6969;
+@function get-color($css-variable) {
+  @return var(--#{$css-variable});
+}
 
-//theme light
-$C-header: #5c667e; 
+:root {
+  --color-black-light: #312f2f;
+  --color-black-dark: #dbdbdb;
 
-$C-font: #7a7a7a;
-$C-font-hover: #decc2e; 
-$C-bg: #ecf0f3;
-$C-hover:  #e3d770;
+  --color-white-light: #ffffff;
+  --color-white-dark: #e7e7e7;
 
-// $C-btn-font: $C-white;
-// $C-btn: #586081;
-$C-btn-font: #5c667e;
-$C-btn: $C-bg;
-$C-btn-hover: $C-hover; 
-$C-btn-active: #decc2e; //input
+  --color-red-light: #dc6969;
+  --color-red-dark: #dc6969;
 
-$C-border: $C-bg;
-$C-border-hover: $C-hover; 
+  --color-header-light: #9da8c2;
+  --color-header-dark: #330c48;
 
-$C-shadow: #cbced1; 
-$C-obj-cat-rimLight: #ffe9aed4; 
+  --color-font-light: #7a7a7a;
+  --color-font-dark: #b0b0b0;
+  
 
-//---------------theme dark：
-// $C-font_dark: #D0ADF0;
-// $C-font-hover_dark: #f0f0f0; 
-// $C-bg_dark: #1a1a1a;
+  --color-font-hover-light: #decc2e;
+  --color-font-hover-dark: #ece9e2;
 
-// $C-header_dark: #5c667e; 
-// $C-btn_dark: #010103;
-// $C-border_dark: #bdc5d5; 
-// $C-border-hover_dark: #535bf2; 
-// $C-shadow_dark: #000000; 
+  --color-bg-light: #ecf0f3;
+  --color-bg-dark: #0d0003;
 
-// @media (prefers-color-scheme: dark) {
-//     * {
-//         color: $C-font_dark;
-//         background-color: $C-bg_dark;
-//     }
-//     a:hover {
-//         color: $C-font-hover_dark;
-//     }
-//     button {
-//         background-color: $C-bg_dark;
-//     }
-// }
+  --color-hover-light: #e3d770;
+  --color-hover-dark: #d4c35a;
+
+  --color-btn-font-light: #ffffff;
+  --color-btn-font-dark: #404987;
+
+  --color-btn-light: #586081;
+  --color-btn-dark:  #77709f;
+
+  --color-btn-hover-light: #e3d770;
+  --color-btn-hover-dark: #e3d770;
+
+  --color-btn-active-light: #decc2e;
+  --color-btn-active-dark: #decc2e;
+
+  --color-border-light: #ecf0f3;
+  --color-border-dark: #ffffff;
+
+  --color-border-hover-light: #e3d770;
+  --color-border-hover-dark: #e3d770;
+
+  --color-shadow-light: #cbced1;
+  --color-shadow-dark: rgb(219, 219, 219);
+
+  --color-obj-cat-rimLight-light: #ffe9aed4;
+  --color-obj-cat-rimLight-dark: #ffffff;
+
+  --color-logo-light: #e7dd83;
+  --color-logo-dark: #f3efe8;
+
+  --color-logo-shadow-light: #e7e6d4;
+  --color-logo-shadow-dark: #525252;
+
+  --color-font-placeholder-light: #bcbaba;
+  --color-font-placeholder-dark: #bcbaba;
+
+  --color-logo-rim-light: #fffffff9;
+  --color-logo-rim-dark: #252525;
+}
+
+
+body.light-mode {
+  --color-black: var(--color-black-light);
+  --color-white: var(--color-white-light);
+  --color-red: var(--color-red-light);
+  --color-header: var(--color-header-light);
+  --color-font: var(--color-font-light);
+  --color-font-hover: var(--color-font-hover-light);
+  --color-bg: var(--color-bg-light);
+  --color-hover: var(--color-hover-light);
+  --color-btn-font: var(--color-btn-font-light);
+  --color-btn: var(--color-btn-light);
+  --color-btn-hover: var(--color-btn-hover-light);
+  --color-btn-active: var(--color-btn-active-light);
+  --color-border: var(--color-border-light);
+  --color-border-hover: var(--color-border-hover-light);
+  --color-shadow: var(--color-shadow-light);
+  --color-obj-cat-rimLight: var(--color-obj-cat-rimLight-light);
+  --color-logo: var(--color-logo-light);
+  --color-font-placeholder: var(--color-font-placeholder-light);
+  --color-logo-rim: var(--color-logo-rim-light);
+  --color-logo-shadow: var(--color-logo-shadow-light);
+  
+
+}
+
+body.dark-mode {
+  --color-black: var(--color-black-dark);
+  --color-white: var(--color-white-dark);
+  --color-red: var(--color-red-dark);
+  --color-header: var(--color-header-dark);
+  --color-font: var(--color-font-dark);
+  --color-font-hover: var(--color-font-hover-dark);
+  --color-bg: var(--color-bg-dark);
+  --color-hover: var(--color-hover-dark);
+  --color-btn-font: var(--color-btn-font-dark);
+  --color-btn: var(--color-btn-dark);
+  --color-btn-hover: var(--color-btn-hover-dark);
+  --color-btn-active: var(--color-btn-active-dark);
+  --color-border: var(--color-border-dark);
+  --color-border-hover: var(--color-border-hover-dark);
+  --color-shadow: var(--color-shadow-dark);
+  --color-obj-cat-rimLight: var(--color-obj-cat-rimLight-dark);
+  --color-logo: var(--color-logo-dark);
+  --color-font-placeholder: var(--color-font-placeholder-dark);
+  --color-logo-rim: var(--color-logo-rim-dark);
+  --color-logo-shadow: var(--color-logo-shadow-dark);
+  
+
+}
 
 
 //------------------------mixin for-size:
 $tablet: 768px;
 $desktop: 1280px;
 // 
-$header-height-tablet: clamp(3rem, -2rem + 25vw, 10rem);
-$header-height: clamp(6.5rem, 1.857rem + 23.214vw, 13rem);
+$header-height-tablet: 30.5rem;
+$header-height: clamp(5.6rem, -54.871rem + 177.857vw, 30.5rem);
 
 // height: calc(100vh - #{$header-height});
 // @include tablet {
@@ -65,7 +132,7 @@ $header-height: clamp(6.5rem, 1.857rem + 23.214vw, 13rem);
 //breakpoints--------:
 $breakpoint-tablet-min: 768px;
 $breakpoint-tablet-mid: 544px;
-$breakpoint-tablet-max: 1279.9px;
+$breakpoint-tablet-max: 1279px;
 $breakpoint-desktop: 1280px;
 
 //padding
@@ -79,23 +146,24 @@ $mobile-btn-height: 3.6rem;
 $tablet-btn-height: 3.8rem;
 $btn-LR-padding: 1.6rem;
 
-//divider
-$divider: 3px solid rgba($C-font, .3);
-
+$divider: 1px solid rgba(var(--color-font), .4);
 
 //
 $border-thick: .5rem;
 $border-radious: 5rem;
-// $shadow: 0 4px 8px rgba($C-shadow, 1);
-$box-shadow:5px 5px 5px $C-shadow, -5px -5px 5px $C-white;
-$box-shadow-dark:5px 5px 5px rgba(18, 18, 18, 0.782), -5px -5px 5px rgba(255, 255, 255, 0.207);
-$btn-shadow:2px 2px 5px $C-shadow, -2px -2px 5px $C-white;
-$inner-shadow:inset 2px 2px 4px $C-shadow, inset -2px -2px 4px $C-white;
+
+$box-shadow: 5px 5px 5px var(--color-shadow), -5px -5px 5px var(--color-white);
+// $box-shadow-dark: 5px 5px 5px var(--color-box-shadow-dark), -5px -5px 5px var(--color-box-shadow-light);
+$btn-shadow: 2px 2px 5px var(--color-shadow), -2px -2px 5px var(--color-white);
+$inner-shadow: inset 2px 2px 4px var(--color-shadow), inset -2px -2px 4px var(--color-white);
+$logo-shadow: 5px 5px 5px  var(--color-logo-rim), -5px -5px 5px var(--color-logo-shadow);
+$link-btn-shadow: 5px 5px 5px  var(--color-bg-dark), -5px -5px 5px var(--color-logo-shadow);
+
 
 //font
 $bazi: 'LongCang';
 $fortune-tell: 'Playwrite Australia NSW';
 
 
-$header-height: clamp(6.5rem, 1.857rem + 23.214vw, 13rem);
+
 

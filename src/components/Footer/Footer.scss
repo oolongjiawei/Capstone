@@ -1,0 +1,31 @@
+// @use "../../styles/partials/breakpoints" as *;
+// @use "../../styles/partials/font" as *;
+// @use "../../styles/partials/global" as *;
+// @use "../../styles/partials/typography" as *;
+// @use "../../styles/partials/variables" as *;
+
+// .footer {
+//   position: relative;
+//   width: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-end;
+//   // top: 25rem;;
+//   // @include tablet{
+//   //   top: 25rem;
+//   // }
+//   flex: 1
+//   &-text {
+//     display: flex;
+//   justify-content: center;
+//   align-items: flex-end;
+//   position: relative;
+//     font-size: 1.6rem;
+//     font-weight: 200;
+//     color: var(--color-font);
+//     @include tablet{
+//      font-size: 1.75rem;
+//     }
+//   }
+// }
+  
