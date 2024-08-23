@@ -1,6 +1,8 @@
 # FORTUNE HOUSE
 * Unlock Your Destiny Through the Four Pillars of Destiny
 
+* Unlock Your Destiny Through the Four Pillars of Destiny
+
 
 ## Overview
 Fortune House is a web app that offers personalized insights based on your birth date using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortune cookies over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
@@ -10,8 +12,16 @@ Fortune House is a web app that offers personalized insights based on your birth
 + Navigate to the project directory.
 + Run 'npm install' to install the dependencies.
 + Run 'npm run dev' to start the app.
+Fortune House is a web app that offers personalized insights based on your birth date using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortune cookies over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
+
+## Usage
++ Clone or download the repository.
++ Navigate to the project directory.
++ Run 'npm install' to install the dependencies.
++ Run 'npm run dev' to start the app.
 
 ## Implementation
+
 
 ### Tech Stack
 
@@ -31,19 +41,35 @@ Fortune House is a web app that offers personalized insights based on your birth
 + Fortune Telling: Calculate and display personalized fortune data.
 + User Management: Register, log in, and manage profiles.
 + Fortune Cookies: Daily and random fortune cookie messages.
++ Fortune Telling: Calculate and display personalized fortune data.
++ User Management: Register, log in, and manage profiles.
++ Fortune Cookies: Daily and random fortune cookie messages.
 
 
 ## Roadmap
 
 ### Create Client
 + Set up React project with routes.
+### Create Client
++ Set up React project with routes.
 
+### Create Server: 
++ Set up Express project with routing.
 ### Create Server: 
 + Set up Express project with routing.
 
 ### Create Migrations: 
 + Define database schema and seed initial data.
+### Create Migrations: 
++ Define database schema and seed initial data.
 
+### Implement Features: 
++ Fortune calculation and display.
++ User registration and profile management.
++ Fortune cookies.
+
+### Bug Fixes: 
++ Address any issues that arise during development and testing.
 ### Implement Features: 
 + Fortune calculation and display.
 + User registration and profile management.
