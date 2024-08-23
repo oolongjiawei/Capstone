@@ -8,12 +8,10 @@
 .user-page {
     display:flex;
     justify-content: center;
-    // align-items: center;
     width: 100vw;
     height: calc(100vh - #{$header-height});
     &__master {
         display:flex;
-        // justify-content: center;
         flex-direction: column;  
     }
 
@@ -22,8 +20,7 @@
     }
     &__wrapper {
         display:flex;
-        justify-content: center;
-        // align-items: center;   
+        justify-content: center; 
         flex-direction: column;
     }
 }
@@ -33,7 +30,6 @@
     border-bottom: $divider;
     display:flex;
     justify-content: center;
-    // align-items: center;
     flex-direction: column;
     @include tablet {
         height: calc(100vh - #{$header-height-tablet});
@@ -44,8 +40,6 @@
         z-index: 2;
         display: flex;
         justify-content: center;
-        // align-items: center;
-        // Hover effect for the entire container
         &:hover {
             .cat__own {
                 filter: drop-shadow(0 0.2rem 0.8rem var(--color-obj-cat-rimLight)) brightness(130%);
@@ -61,9 +55,7 @@
     &__own {
         display: flex;
         justify-content: center;
-        // align-items: center;
         transform-origin: 50% 90%;
-        // position: relative;
         position: relative; 
         min-width: 200px;
         z-index: 1; 
