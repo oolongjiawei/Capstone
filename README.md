@@ -11,8 +11,8 @@ Fortune House is a web app that offers personalized insights based on your birth
 
 + Clone or download this frontend repo.
 + Navigate to the project directory.
-+ Run 'npm install' to install the dependencies.
-+ Run 'npm run dev' to start the app.
++ Run ` to install` the dependencies.
++ Run `npm run dev` to start the app.
 
 + Please don't forget to combine with the Backend Repo: Capstone-API
 
