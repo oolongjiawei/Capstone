@@ -8,11 +8,13 @@
 Fortune House is a web app that offers personalized insights based on your birth date using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortune cookies over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
 
 ## Usage
-+ Clone or download the repository.
+
++ Clone or download this frontend repo.
 + Navigate to the project directory.
 + Run 'npm install' to install the dependencies.
 + Run 'npm run dev' to start the app.
-Fortune House is a web app that offers personalized insights based on your birth date using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortune cookies over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
+
++ Please don't forget to combine with the Backend Repo: Capstone-API
 
 ## Usage
 + Clone or download the repository.
