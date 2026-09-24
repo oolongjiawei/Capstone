@@ -17,8 +17,6 @@ const SavedCookies = ({ userId }) => {
           `http://localhost:8080/api/fortune/user/${userId}/saved-cookies`
         );
         setSavedCookies(response.data);
-
-        fetchSavedCookies();
       } catch (error) {
         console.error(
           "Error fetching saved fortune cookies:",

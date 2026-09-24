@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "api/bazi.js": { "includeFiles": "api/_lib/data/**" }
+  },
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
+}

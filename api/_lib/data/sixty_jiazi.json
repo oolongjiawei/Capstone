@@ -1,0 +1,362 @@
+[
+  {
+    "name": "甲子",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Kind-hearted and fair, empathetic, but can be indecisive, struggling with making firm decisions."
+  },
+  {
+    "name": "乙丑",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Practical and steady, highly responsible, but may be overly cautious and lack a sense of adventure."
+  },
+  {
+    "name": "丙寅",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Passionate and confident, strong social skills, but may be too arrogant and disregard others' feelings."
+  },
+  {
+    "name": "丁卯",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Intuitive with a love for traditional culture, but overly conservative and stubborn."
+  },
+  {
+    "name": "戊辰",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Intelligent and sociable, but may come across as insincere, lacking authenticity."
+  },
+  {
+    "name": "己巳",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Persistent and reliable, strong sense of duty, but can be stubborn and resistant to others' opinions."
+  },
+  {
+    "name": "庚午",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Passionate and ambitious, but often restless and dissatisfied with results."
+  },
+  {
+    "name": "辛未",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Smart and meticulous, good with finances, but sometimes too calculating and overly controlling."
+  },
+  {
+    "name": "壬申",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Clever and independent, but can be isolated, struggling with deep connections."
+  },
+  {
+    "name": "癸酉",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Calm and rational, highly intelligent, but may be too distant, struggling to build emotional connections."
+  },
+  {
+    "name": "甲戌",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Compassionate and responsible, but sometimes overly emotional, easily influenced by external factors."
+  },
+  {
+    "name": "乙亥",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Emotionally rich and determined, but may be too emotional, lacking in calm analysis."
+  },
+  {
+    "name": "丙子",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Sharp and quick-thinking, but sometimes too hasty, making rash decisions."
+  },
+  {
+    "name": "丁丑",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Practical and steady, detail-oriented, but may lack innovation, content with the status quo."
+  },
+  {
+    "name": "戊寅",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Determined and empathetic, but sometimes too serious, lacking a sense of humor."
+  },
+  {
+    "name": "己卯",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Humble and cautious, focused on spiritual growth, but may overanalyze, leading to internal conflicts."
+  },
+  {
+    "name": "庚辰",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Intelligent and values spiritual life, but may be too idealistic, disconnected from reality."
+  },
+  {
+    "name": "辛巳",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Calm and rational, efficiency-driven, but sometimes too harsh, lacking warmth."
+  },
+  {
+    "name": "壬午",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Sharp and independent, but may be too arrogant, resistant to others' opinions."
+  },
+  {
+    "name": "癸未",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Smart and practical, focused on development, but may be too conservative, resistant to change."
+  },
+  {
+    "name": "甲申",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Strategic with leadership skills, but may be too forceful, struggling with teamwork."
+  },
+  {
+    "name": "乙酉",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Independent and rational, but may be isolated, struggling with deep connections."
+  },
+  {
+    "name": "丙戌",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Passionate and generous, highly responsible, but sometimes too blunt, hurting others' feelings."
+  },
+  {
+    "name": "丁亥",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Smart and artistic, but emotionally volatile, struggling to maintain stability."
+  },
+  {
+    "name": "戊子",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Strong-willed and good at management, but may be too authoritarian, lacking flexibility."
+  },
+  {
+    "name": "己丑",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Steady and reliable, detail-oriented, but may be too conservative, lacking innovation."
+  },
+  {
+    "name": "庚寅",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Quick-witted and adaptable, but may be too eager for success, lacking patience."
+  },
+  {
+    "name": "辛卯",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Deep-thinking and analytical, but may be too serious, lacking a sense of humor."
+  },
+  {
+    "name": "壬辰",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Intelligent and philosophical, but may be too idealistic, disconnected from reality."
+  },
+  {
+    "name": "癸巳",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Rational and practical, efficiency-driven, but may be too cold, lacking warmth."
+  },
+  {
+    "name": "甲午",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Creative and freedom-seeking, but may be too arrogant, ignoring others' feelings."
+  },
+  {
+    "name": "乙未",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Smart and meticulous, good at handling relationships, but may be too controlling, struggling to let go."
+  },
+  {
+    "name": "丙申",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Passionate and open, innovative, but may be too restless, struggling with long-term commitment."
+  },
+  {
+    "name": "丁酉",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Sharp and strategic, but may be too perfectionistic, never satisfied."
+  },
+  {
+    "name": "戊戌",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Confident and determined, strong leadership, but may be too forceful, resistant to others' opinions."
+  },
+  {
+    "name": "己亥",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Gentle and kind, focused on inner growth, but may be too compliant, lacking assertiveness."
+  },
+  {
+    "name": "庚子",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Clever and adaptable, but may be self-centered, struggling with collaboration."
+  },
+  {
+    "name": "辛丑",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Confident and decisive, detail-oriented, but may be stubborn, resistant to others' briefs."
+  },
+  {
+    "name": "壬寅",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Flexible thinking, good at adapting to change, but may be emotionally volatile, struggling to stay calm."
+  },
+  {
+    "name": "癸卯",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Calm and rational, good at analyzing problems, but may be too cold, struggling to form deep connections."
+  },
+  {
+    "name": "甲辰",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Intelligent and artistically inclined, but may be too idealistic, lacking practicality."
+  },
+  {
+    "name": "乙巳",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Financially savvy and practical, but may be too utilitarian, lacking warmth."
+  },
+  {
+    "name": "丙午",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Creative and brave, willing to take on challenges, but may be too arrogant, resistant to criticism."
+  },
+  {
+    "name": "丁未",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Kind and gentle, focused on inner growth, but may be too sensitive, emotionally volatile."
+  },
+  {
+    "name": "戊申",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Determined and responsible, but may be too authoritarian, resistant to others' opinions."
+  },
+  {
+    "name": "己酉",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Practical and rational, detail-oriented, but may be too conservative, lacking innovation."
+  },
+  {
+    "name": "庚戌",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Strong sense of justice, intelligent, but may be too forceful, struggling with collaboration."
+  },
+  {
+    "name": "辛亥",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Smart and rational, focused on relationships, but may be too controlling, struggling to let go."
+  },
+  {
+    "name": "壬子",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Sharp and innovative, but may be too hasty, struggling with long-term commitment."
+  },
+  {
+    "name": "癸丑",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Wise and focused on personal growth, but may be too conservative, lacking a sense of adventure."
+  },
+  {
+    "name": "甲寅",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Determined and strategic, but may be too forceful, struggling with collaboration."
+  },
+  {
+    "name": "乙卯",
+    "element": "wood",
+    "element_color": "green",
+    "brief": "Determined and focused on inner cultivation, but may be too stubborn, resistant to change."
+  },
+  {
+    "name": "丙辰",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Determined and brave, values integrity, but may be too serious, lacking a sense of humor."
+  },
+  {
+    "name": "丁巳",
+    "element": "fire",
+    "element_color": "red",
+    "brief": "Smart and decisive, efficiency-driven, but may be too cold, lacking warmth."
+  },
+  {
+    "name": "戊午",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Strong leadership, strives for excellence, but may be too authoritarian, resistant to others' opinions."
+  },
+  {
+    "name": "己未",
+    "element": "earth",
+    "element_color": "yellow",
+    "brief": "Kind and gentle, focused on inner growth, but may be too compliant, lacking assertiveness."
+  },
+  {
+    "name": "庚申",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Clever and adaptable, good at handling challenges, but may be too restless, struggling with long-term commitment."
+  },
+  {
+    "name": "辛酉",
+    "element": "metal",
+    "element_color": "white",
+    "brief": "Confident and decisive, efficiency-driven, but may be too perfectionistic, never satisfied."
+  },
+  {
+    "name": "壬戌",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Strong sense of justice, strives for fairness, but may be too harsh, lacking tolerance."
+  },
+  {
+    "name": "癸亥",
+    "element": "water",
+    "element_color": "black",
+    "brief": "Wise and focused on spiritual growth, but may be too introverted, struggling to integrate into groups."
+  }
+]
