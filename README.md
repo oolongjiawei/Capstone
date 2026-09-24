@@ -4,6 +4,9 @@
 * Unlock Your Destiny Through the Four Pillars of Destiny
 
 
+**Live demo:** https://dorie-fortune-house.vercel.app — log in with `demo@fortunehouse.app` / `fortune`.
+The demo runs the real Bazi engine as a Vercel function; accounts and saved cookies are kept in your browser instead of MySQL.
+
 ## Overview
 Fortune House is a web app that offers personalized insights based on your birth date using the Four Pillars of Destiny. It provides detailed fortune-telling, daily fortune cookies, and tools to track fortune cookies over time. Accessible on both desktop and mobile, it’s designed for quick, intuitive use—whether for fun or serious insight.
 
