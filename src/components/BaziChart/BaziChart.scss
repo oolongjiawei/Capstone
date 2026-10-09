@@ -7,6 +7,9 @@
 .bazi-chart {
     margin: clamp(1rem, 0.286rem + 3.571vw, 2rem) auto;
     text-align: center;
+    // never wider than its container (a flex item would otherwise grow to the table's width)
+    min-width: 0;
+    width: 100%;
   }
   
   .bazi-chart__table {
@@ -14,7 +17,8 @@
     border-collapse: collapse;
     // font-size: 16px;
     color: var(--color-heading);
-    font-size:clamp(1rem, 0rem + 5vw, 2.4rem);
+    // a touch smaller on phones so four columns of words like "independent," still fit
+    font-size:clamp(1rem, 0rem + 4.6vw, 2.4rem);
     // @include tablet {
       
     // }
