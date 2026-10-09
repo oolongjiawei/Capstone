@@ -1,4 +1,5 @@
 import { MONTH_NAMES } from './pickerUtils';
+import { playSelect } from '../../sound/mysticSound';
 
 const MonthGrid = ({ value, onSelect }) => (
   <div className="bazi-months" role="group" aria-label="Birth month">
@@ -9,7 +10,11 @@ const MonthGrid = ({ value, onSelect }) => (
         className={`bazi-option ${value === i + 1 ? 'is-selected' : ''}`}
         aria-pressed={value === i + 1}
         aria-label={name}
-        onClick={() => onSelect(i + 1)}
+        onClick={() => {
+          playSelect(i % 5);
+          onSelect(i + 1);
+        }}
+        data-sound="custom"
       >
         {name.slice(0, 3)}
       </button>

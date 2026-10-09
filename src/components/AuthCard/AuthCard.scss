@@ -45,11 +45,18 @@
   &__input {
     padding: 1rem 1rem 1rem 4rem;
   }
+  // sound on/off in the card's top-left corner
+  &__sound {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+  }
   &__demo-button {
     background-color: var(--color-btn-secondary);
     color: var(--color-accent-text);
   }
   &__card {
+    position: relative;
     background-color: var(--color-bg);
 
     box-shadow: $box-shadow;

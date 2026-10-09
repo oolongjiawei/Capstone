@@ -105,6 +105,18 @@
   --color-paper-text-dark: #e4e1ec;
   --color-paper-stamp-light: rgba(26, 121, 223, 0.281);
   --color-paper-stamp-dark: rgba(227, 208, 124, 0.55);
+
+  // name animation: gold letters like the title, outlined in the button colour
+  --color-reveal-fill-light: #e7dd83;
+  --color-reveal-fill-dark: #e3d07c;
+  --color-reveal-outline-light: #586081;
+  --color-reveal-outline-dark: #6c66a8;
+  --color-reveal-sweep-1-light: #dc6969;
+  --color-reveal-sweep-1-dark: #dc6969;
+  --color-reveal-sweep-2-light: #586081;
+  --color-reveal-sweep-2-dark: #6c66a8;
+  --color-reveal-sweep-3-light: #9da8c2;
+  --color-reveal-sweep-3-dark: #a59fdc;
 }
 
 
@@ -143,6 +155,11 @@ body.light-mode {
   --color-paper-line: var(--color-paper-line-light);
   --color-paper-text: var(--color-paper-text-light);
   --color-paper-stamp: var(--color-paper-stamp-light);
+  --color-reveal-fill: var(--color-reveal-fill-light);
+  --color-reveal-outline: var(--color-reveal-outline-light);
+  --color-reveal-sweep-1: var(--color-reveal-sweep-1-light);
+  --color-reveal-sweep-2: var(--color-reveal-sweep-2-light);
+  --color-reveal-sweep-3: var(--color-reveal-sweep-3-light);
   --paper-icon-opacity: 1;
   
 
@@ -183,6 +200,11 @@ body.dark-mode {
   --color-paper-line: var(--color-paper-line-dark);
   --color-paper-text: var(--color-paper-text-dark);
   --color-paper-stamp: var(--color-paper-stamp-dark);
+  --color-reveal-fill: var(--color-reveal-fill-dark);
+  --color-reveal-outline: var(--color-reveal-outline-dark);
+  --color-reveal-sweep-1: var(--color-reveal-sweep-1-dark);
+  --color-reveal-sweep-2: var(--color-reveal-sweep-2-dark);
+  --color-reveal-sweep-3: var(--color-reveal-sweep-3-dark);
   --paper-icon-opacity: 0.35;
   
 

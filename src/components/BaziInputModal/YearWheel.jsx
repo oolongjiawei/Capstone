@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { playTick } from '../../sound/mysticSound';
 
 // Must match $wheel-item-height in BaziInputModal.scss
 const ITEM_HEIGHT = 40;
@@ -31,8 +32,16 @@ const YearWheel = ({ min, max, value, onChange, onDone }) => {
   };
 
   // Pick up the year once scrolling settles on it
+  const lastIndex = useRef(null);
+
   const handleScroll = () => {
     if (!userScrolled.current) return;
+    // a ratchet tick each time a new year passes the middle band
+    const passing = Math.round(listRef.current.scrollTop / ITEM_HEIGHT);
+    if (passing !== lastIndex.current) {
+      if (lastIndex.current !== null) playTick();
+      lastIndex.current = passing;
+    }
     clearTimeout(settleTimer.current);
     settleTimer.current = setTimeout(() => {
       const index = Math.round(listRef.current.scrollTop / ITEM_HEIGHT);

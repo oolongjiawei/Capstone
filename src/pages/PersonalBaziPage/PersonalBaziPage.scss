@@ -1,3 +1,5 @@
+@use '../../styles/partials/variables' as *;
+
 .cookies-page {
     padding: 20px;
     text-align: center;
@@ -43,4 +45,138 @@
       background-color: var(--color-btn-hover);
       color: var(--color-font);
     }
+  }
+
+  // ---- list of Bazi profiles
+  .bazi-page__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    .bazi-page__cta {
+      margin-top: 0;
+    }
+  }
+  .cookies__all .bazi-page__header h2 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0;
+  }
+  .bazi-page__count {
+    min-width: 2.8rem;
+    padding: 0 0.8rem;
+    border-radius: 1.4rem;
+    background-color: var(--color-btn);
+    color: var(--color-btn-font);
+    font-size: 1.4rem;
+    line-height: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  .bazi-page__list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+  }
+
+  // one row per person; tap the row to show the chart and actions
+  .bazi-profile {
+    border: 0.2rem solid transparent;
+    border-radius: 2rem;
+    background-color: var(--color-bg);
+    box-shadow: $box-shadow;
+    scroll-margin-top: 2rem;
+    &.is-new {
+      border-color: var(--color-border-hover);
+    }
+
+    &__summary {
+      justify-content: flex-start;
+      gap: 1.2rem;
+      height: auto;
+      margin: 0;
+      padding: 1.6rem 2rem;
+      border: 0;
+      border-radius: 2rem;
+      background-color: transparent;
+      color: var(--color-text);
+      box-shadow: none;
+      letter-spacing: normal;
+      text-align: left;
+      &:hover {
+        background-color: var(--color-btn-secondary);
+        color: var(--color-text);
+        transform: none;
+      }
+      &:focus-visible {
+        outline: 0.3rem solid var(--color-btn);
+      }
+      .bazi-page__notice {
+        margin-bottom: 0;
+      }
+    }
+    &__heading {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
+    &__name {
+      // names are typed by people: skip LongCang, which only carries the chart's characters
+      font-family: 'Jost', sans-serif;
+      color: var(--color-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.3;
+      overflow-wrap: anywhere;
+    }
+    &__birth {
+      color: var(--color-font);
+      font-size: 1.4rem;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+    &__chevron {
+      flex: none;
+      width: 1rem;
+      height: 1rem;
+      border-right: 0.25rem solid var(--color-font);
+      border-bottom: 0.25rem solid var(--color-font);
+      transform: rotate(45deg);
+      transition: transform 0.2s ease;
+    }
+    &.is-expanded &__chevron {
+      transform: rotate(-135deg);
+    }
+
+    &__details {
+      padding: 0 clamp(1.2rem, 0.6rem + 2vw, 2.4rem) 2rem;
+      animation: bazi-profile-open 0.2s ease-out;
+    }
+    &__actions {
+      display: flex;
+      gap: 1.2rem;
+      button {
+        flex: 1;
+        margin-top: 1.6rem;
+        letter-spacing: normal;
+        font-size: clamp(1.4rem, 1.2rem + 1vw, 1.7rem);
+      }
+    }
+    &__delete {
+      background-color: var(--color-btn-secondary);
+      color: var(--color-red);
+      &:hover {
+        background-color: var(--color-red);
+        color: var(--color-white-light);
+      }
+    }
+  }
+
+  @keyframes bazi-profile-open {
+    from { opacity: 0; transform: translateY(-0.6rem); }
+    to { opacity: 1; transform: none; }
   }

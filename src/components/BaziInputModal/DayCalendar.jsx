@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MONTH_NAMES, daysInMonth } from './pickerUtils';
+import { playSelect } from '../../sound/mysticSound';
 
 const WEEKDAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
@@ -54,7 +55,11 @@ const DayCalendar = ({ year, month, day, minYear, onSelect }) => {
               aria-pressed={isSelected(d)}
               aria-label={`${MONTH_NAMES[view.month - 1]} ${d}, ${view.year}`}
               disabled={isFuture(d)}
-              onClick={() => onSelect(view.year, view.month, d)}
+              onClick={() => {
+                playSelect(d % 7);
+                onSelect(view.year, view.month, d);
+              }}
+              data-sound="custom"
             >
               {d}
             </button>

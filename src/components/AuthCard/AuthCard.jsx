@@ -4,6 +4,8 @@ import "./AuthCard.scss";
 import { useNavigate } from "react-router-dom";
 import LogoComponent from '../LogoComponent/LogoComponent';
 import { DEMO_USER } from "../../demo/demoApi.js";
+import SoundToggle from "../SoundToggle/SoundToggle";
+import { playError, playSuccess } from "../../sound/mysticSound";
 
 const DEMO = import.meta.env.VITE_DEMO_MODE === "true";
 
@@ -63,6 +65,7 @@ const AuthCard = ({ type }) => {
     setIsRequired(true);  
 
     if (!validateForm()) {
+      playError();
       return;
     }
 
@@ -78,11 +81,13 @@ const AuthCard = ({ type }) => {
       localStorage.setItem('username', response.data.username);
 
       if (response.data.userId) {
+        playSuccess();
         navigate(`/user/${response.data.userId}`);
       } else {
         console.error("User ID is missing in the response");
       }
     } catch (err) {
+      playError();
       setError("An error occurred !!");
     }
   };
@@ -97,6 +102,7 @@ const AuthCard = ({ type }) => {
       style={{ backgroundImage: `url(${apodImageUrl})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center' }} // 设置背景图像
     >
       <div className="auth__card card">
+        <SoundToggle className="auth__sound" />
         <div className="auth__header">
           <div className="auth__header--logo">
             <LogoComponent />

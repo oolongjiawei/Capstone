@@ -3,6 +3,7 @@ import axios from 'axios';
 import './DefaultCookie.scss';
 import cookieImage from '../../assets/images/cookie.png';
 import cookieOpenImage from '../../assets/images/cookie-open.png';
+import { playCollect, playCookieCrack, playError } from '../../sound/mysticSound';
 
 const DefaultCookie = ({ savedIds, onSave }) => {
   const [fortune, setFortune] = useState(null); // { id, message }
@@ -11,6 +12,7 @@ const DefaultCookie = ({ savedIds, onSave }) => {
   const [error, setError] = useState('');
 
   const handleCrackCookie = async () => {
+    playCookieCrack();
     setError('');
     setJustSaved(false);
     try {
@@ -30,10 +32,12 @@ const DefaultCookie = ({ savedIds, onSave }) => {
     setError('');
     try {
       await onSave(fortune.id);
+      playCollect();
       // back to a whole cookie, ready to crack the next one
       setFortune(null);
       setJustSaved(true);
     } catch (error) {
+      playError();
       console.error('Error saving Fortune Cookie:', error.response ? error.response.data : error.message);
       setError('Couldn’t save this fortune. Please try again.');
     } finally {
@@ -62,6 +66,7 @@ const DefaultCookie = ({ savedIds, onSave }) => {
         type="button"
         className={`default-cookie__wrap ${fortune ? 'is-open' : ''}`}
         onClick={handleCrackCookie}
+        data-sound="custom"
         disabled={Boolean(fortune)}
         aria-label="Crack open a fortune cookie"
       >
@@ -82,6 +87,7 @@ const DefaultCookie = ({ savedIds, onSave }) => {
               type="button"
               className="default-cookie__button-save"
               onClick={handleSaveFortuneCookie}
+              data-sound="custom"
               disabled={isSaved || isSaving}
             >
               {isSaved ? 'Already collected' : isSaving ? 'Saving…' : 'Save to collection'}

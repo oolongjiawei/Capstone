@@ -1,6 +1,6 @@
 // Demo mode for the Vercel deployment.
 // The original app talks to an Express + MySQL API on localhost:8080. Here those
-// requests are answered in the browser (accounts, saved cookies, saved charts live in
+// requests are answered in the browser (accounts, saved cookies, Bazi profiles live in
 // localStorage), while the Bazi calculation runs on the real engine in /api/bazi.
 import fortuneCookies from "./fortune_cookies.json";
 
@@ -17,7 +17,18 @@ async function loadDb() {
   let db = null;
   try { db = JSON.parse(localStorage.getItem(KEY)); } catch { /* ignore */ }
   if (!db) {
-    db = { nextId: 2, users: [{ id: 1, email: DEMO_USER.email, username: DEMO_USER.username, password: await hash(DEMO_USER.password) }], bazi: {}, cookies: [] };
+    db = { nextId: 2, users: [{ id: 1, email: DEMO_USER.email, username: DEMO_USER.username, password: await hash(DEMO_USER.password) }], profiles: [], nextProfileId: 1, cookies: [] };
+    saveDb(db);
+  }
+  // Older demo data kept one chart per user (db.bazi); turn each into a named profile
+  if (db.bazi) {
+    db.profiles = db.profiles || [];
+    db.nextProfileId = db.nextProfileId || 1;
+    for (const [userId, bazi] of Object.entries(db.bazi)) {
+      const user = db.users.find((u) => u.id === +userId);
+      db.profiles.push({ id: db.nextProfileId++, name: user?.username || "Me", created_at: new Date().toISOString(), ...bazi });
+    }
+    delete db.bazi;
     saveDb(db);
   }
   return db;
@@ -26,6 +37,26 @@ const saveDb = (db) => { try { localStorage.setItem(KEY, JSON.stringify(db)); } 
 
 class HttpError extends Error {
   constructor(status, message) { super(message); this.status = status; }
+}
+
+// Runs the real Bazi engine (/api/bazi) and shapes the result like a stored profile row
+async function calculateBazi(userId, { name, birthYear, birthMonth, birthDay, birthTime }) {
+  const trimmedName = (name || "").trim();
+  if (!userId || !trimmedName) throw new HttpError(400, "Invalid input parameters.");
+  const res = await fetch("/api/bazi", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ birthYear, birthMonth, birthDay, birthTime }),
+  });
+  const json = await res.json();
+  if (!res.ok) throw new HttpError(res.status, json.message);
+  const r = json.bazi;
+  return {
+    user_id: userId, name: trimmedName, birth_year: +birthYear, birth_month: +birthMonth, birth_day: +birthDay, birth_time: +birthTime,
+    bazi_year: r.year, bazi_month: r.month, bazi_day: r.day, bazi_time: r.time,
+    element: r.element, element_color: r.element_color, brief: r.brief,
+    symbol_year: r.symbol_year, symbol_month: r.symbol_month, symbol_day: r.symbol_day, symbol_time: r.symbol_time,
+  };
 }
 
 async function route(method, path, body) {
@@ -58,32 +89,33 @@ async function route(method, path, body) {
   }
   if (method === "get" && path === "/api/fortune/cookies") return COOKIES;
   if (method === "post" && path === "/api/fortune/bazi") {
-    const { userId, birthYear, birthMonth, birthDay, birthTime, save } = body;
-    if (!userId) throw new HttpError(400, "Invalid input parameters.");
-    const res = await fetch("/api/bazi", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ birthYear, birthMonth, birthDay, birthTime }),
-    });
-    const json = await res.json();
-    if (!res.ok) throw new HttpError(res.status, json.message);
-    const r = json.bazi;
-    const bazi = {
-      user_id: +userId, birth_year: +birthYear, birth_month: +birthMonth, birth_day: +birthDay, birth_time: +birthTime,
-      bazi_year: r.year, bazi_month: r.month, bazi_day: r.day, bazi_time: r.time,
-      element: r.element, element_color: r.element_color, brief: r.brief,
-      symbol_year: r.symbol_year, symbol_month: r.symbol_month, symbol_day: r.symbol_day, symbol_time: r.symbol_time,
-    };
+    const { userId, save } = body;
+    const bazi = await calculateBazi(+userId, body);
     if (!save) return { message: "Bazi data generated.", bazi };
-    const existed = !!db.bazi[userId];
-    db.bazi[userId] = bazi;
+    // every save is a new profile, so one account can keep charts for several people
+    const profile = { id: db.nextProfileId++, created_at: new Date().toISOString(), ...bazi };
+    db.profiles.push(profile);
     saveDb(db);
-    return { message: existed ? "Bazi data updated." : "Bazi data saved.", bazi };
+    return { message: "Bazi profile saved.", bazi: profile };
   }
-  if (method === "get" && (m = path.match(/^\/api\/fortune\/user\/(\d+)\/bazi$/))) {
-    const bazi = db.bazi[m[1]];
-    if (!bazi) throw new HttpError(404, "No fortune data found for this user.");
-    return bazi;
+  if (method === "get" && (m = path.match(/^\/api\/fortune\/user\/(\d+)\/profiles$/))) {
+    return db.profiles
+      .filter((p) => p.user_id === +m[1])
+      .sort((a, b) => b.created_at.localeCompare(a.created_at));
+  }
+  if (method === "put" && (m = path.match(/^\/api\/fortune\/user\/(\d+)\/profiles\/(\d+)$/))) {
+    const profile = db.profiles.find((p) => p.user_id === +m[1] && p.id === +m[2]);
+    if (!profile) throw new HttpError(404, "Bazi profile not found.");
+    Object.assign(profile, await calculateBazi(+m[1], body), { updated_at: new Date().toISOString() });
+    saveDb(db);
+    return { message: "Bazi profile updated.", bazi: profile };
+  }
+  if (method === "delete" && (m = path.match(/^\/api\/fortune\/user\/(\d+)\/profiles\/(\d+)$/))) {
+    const before = db.profiles.length;
+    db.profiles = db.profiles.filter((p) => !(p.user_id === +m[1] && p.id === +m[2]));
+    if (db.profiles.length === before) throw new HttpError(404, "Bazi profile not found.");
+    saveDb(db);
+    return { message: "Bazi profile deleted." };
   }
   if (method === "get" && (m = path.match(/^\/api\/fortune\/user\/(\d+)\/saved-cookies$/))) {
     return db.cookies.filter((c) => c.user_id === +m[1]).map(({ cookie_id, cookie_message, created_at }) => ({ cookie_id, cookie_message, created_at }));

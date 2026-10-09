@@ -1,0 +1,60 @@
+@use '../../styles/partials/breakpoints' as *;
+
+.sound-toggle {
+  flex: none;
+  width: 4rem;
+  height: 4rem;
+  margin: 0;
+  padding: 0.8rem;
+  border: 0;
+  border-radius: 50%;
+  background-color: transparent;
+  box-shadow: none;
+  color: var(--color-font);
+  letter-spacing: normal;
+  svg {
+    flex: none;
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  &__speaker {
+    fill: currentColor;
+  }
+  &:hover {
+    background-color: var(--color-btn-secondary);
+    color: var(--color-text);
+    transform: none;
+  }
+  &:focus-visible {
+    outline: 0.3rem solid var(--color-btn);
+  }
+
+  // a pill with text in the mobile menu, an icon button from the mid breakpoint up
+  &--labelled {
+    width: auto;
+    gap: 0.8rem;
+    padding: 0.8rem 2rem;
+    border-radius: 2rem;
+  }
+  &__label {
+    // the global span rule would shrink and recolour it
+    color: inherit;
+    font-size: 1.8rem;
+    font-weight: 500;
+    @include mid {
+      display: none;
+    }
+  }
+  &--labelled {
+    @include mid {
+      width: 4rem;
+      padding: 0.8rem;
+      border-radius: 50%;
+    }
+  }
+}

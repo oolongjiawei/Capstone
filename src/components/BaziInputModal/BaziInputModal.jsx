@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Modal from 'react-modal';
 import './BaziInputModal.scss';
 import YearWheel from './YearWheel';
@@ -6,10 +6,13 @@ import MonthGrid from './MonthGrid';
 import DayCalendar from './DayCalendar';
 import HourClock from './HourClock';
 import { MONTH_NAMES, daysInMonth, formatHour } from './pickerUtils';
+import SoundToggle from '../SoundToggle/SoundToggle';
+import { playBreath, playError, playSlide } from '../../sound/mysticSound';
 
 Modal.setAppElement('#root');  // For accessibility considerations
 
 const MIN_YEAR = 1950;
+const MAX_NAME_LENGTH = 30;
 const FIELDS = ['year', 'month', 'day', 'hour'];
 
 // One row of the form: tap it to expand its picker underneath
@@ -20,7 +23,11 @@ const PickerField = ({ name, label, display, isOpen, isInvalid, onToggle, childr
       className="bazi-input__toggle"
       aria-expanded={isOpen}
       aria-controls={`bazi-${name}-panel`}
-      onClick={onToggle}
+      onClick={() => {
+        playSlide(!isOpen);
+        onToggle();
+      }}
+      data-sound="custom"
     >
       <span className="bazi-input__label">{label}</span>
       <span className={`bazi-input__value ${display ? '' : 'is-empty'}`}>{display ?? 'Select'}</span>
@@ -33,14 +40,24 @@ const PickerField = ({ name, label, display, isOpen, isInvalid, onToggle, childr
   </div>
 );
 
-const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
-  const [year, setYear] = useState(null);
-  const [month, setMonth] = useState(null);
-  const [day, setDay] = useState(null);
-  const [hour, setHour] = useState(null);
-  const [openField, setOpenField] = useState('year');
-  const [error, setError] = useState('');
+// initialValues: an existing profile when editing it
+const BaziInputModal = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  initialValues = null,
+  title = 'Enter Your Information',
+  submitLabel = 'Generate Bazi',
+}) => {
+  const [name, setName] = useState(initialValues?.name ?? '');
+  const nameRef = useRef(null);
+  const [year, setYear] = useState(initialValues?.birth_year ?? null);
+  const [month, setMonth] = useState(initialValues?.birth_month ?? null);
+  const [day, setDay] = useState(initialValues?.birth_day ?? null);
+  const [hour, setHour] = useState(initialValues?.birth_time ?? null);
+  const [openField, setOpenField] = useState(initialValues ? null : 'year');
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
 
   const currentYear = new Date().getFullYear();
   const values = { year, month, day, hour };
@@ -73,21 +90,27 @@ const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
     openNext('day');
   };
 
+  // the warning follows the form: it shows after a failed submit and goes once all is filled in
+  const isComplete = Boolean(name.trim()) && FIELDS.every((field) => values[field] != null);
+
   const handleSubmit = () => {
     setHasSubmitted(true);
     const missing = FIELDS.find((field) => values[field] == null);
-    if (missing) {
-      setError('Please choose your birth year, month, day and hour.');
-      setOpenField(missing);
+    if (!isComplete) {
+      playError();
+      if (!name.trim()) {
+        nameRef.current.focus();
+      } else {
+        setOpenField(missing);
+      }
       return;
     }
 
-    setError('');
-    setTimeout(() => {
-      // the API takes whole hours; flooring keeps the same 时辰 since those change on whole odd hours
-      onSubmit({ year, month, day, hour: Math.floor(hour) });
-      onClose();
-    }, 300);
+    // coming back here to edit (Regenerate) starts from a tidy form with every picker closed
+    setHasSubmitted(false);
+    setOpenField(null);
+    // the API takes whole hours; flooring keeps the same 时辰 since those change on whole odd hours
+    onSubmit({ name: name.trim(), year, month, day, hour: Math.floor(hour) });
   };
 
   const fieldProps = (name) => ({
@@ -106,9 +129,37 @@ const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
       overlayClassName="bazi-input__overlay"
       closeTimeoutMS={300}
     >
-      <h1>Enter Your Information</h1>
+      <SoundToggle className="bazi-input__sound" />
+      <button
+        type="button"
+        className="bazi-input__close"
+        onClick={() => {
+          playBreath(false);
+          onClose();
+        }}
+        aria-label="Close"
+        data-sound="custom"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18" />
+        </svg>
+      </button>
+      <h1>{title}</h1>
       <div className='bazi-input__popup'>
         <div className='bazi-input__fields'>
+          <label className={`bazi-input__name ${hasSubmitted && !name.trim() ? 'invalid' : ''}`}>
+            <span className="bazi-input__label">Name</span>
+            <input
+              ref={nameRef}
+              type="text"
+              className="bazi-input__name-input"
+              placeholder="Whose chart is this?"
+              value={name}
+              maxLength={MAX_NAME_LENGTH}
+              onChange={(e) => setName(e.target.value)}
+              autoComplete="off"
+            />
+          </label>
           <PickerField {...fieldProps('year')} label="Birth Year" display={year}>
             <YearWheel min={MIN_YEAR} max={currentYear} value={year} onChange={handleYearChange} onDone={handleYearDone} />
           </PickerField>
@@ -125,12 +176,12 @@ const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
             <HourClock value={hour} onChange={setHour} />
           </PickerField>
         </div>
-        {error && (
+        {hasSubmitted && !isComplete && (
           <small className="error-message">
-            {error}
+            Please enter a name and choose the birth year, month, day and hour.
           </small>
         )}
-        <button onClick={handleSubmit}>Generate Bazi</button>
+        <button onClick={handleSubmit} data-sound="custom">{submitLabel}</button>
       </div>
     </Modal>
   );

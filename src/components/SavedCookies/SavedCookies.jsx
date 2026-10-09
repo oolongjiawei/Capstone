@@ -2,6 +2,7 @@ import deleteIcon from "../../assets/icons/close.svg";
 import smileFaceIcon from "../../assets/icons/smile-face.svg";
 import cookieNote from "../../assets/images/cookie-note.png";
 import "./SavedCookies.scss";
+import { playRemove } from "../../sound/mysticSound";
 
 const SavedCookies = ({ cookies, error, onDelete }) => {
   return (
@@ -33,7 +34,11 @@ const SavedCookies = ({ cookies, error, onDelete }) => {
               <button
                 type="button"
                 className="saved-cookie__delete"
-                onClick={() => onDelete(cookie.cookie_id)}
+                onClick={() => {
+                  playRemove();
+                  onDelete(cookie.cookie_id);
+                }}
+                data-sound="custom"
                 aria-label={`Delete fortune: ${cookie.cookie_message}`}
               >
                 <img src={deleteIcon} alt="" />

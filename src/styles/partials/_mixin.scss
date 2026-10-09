@@ -58,3 +58,11 @@
     }
 
 }
+
+// Frosted glass over the page: the mobile menu, the name animation and the Bazi result.
+// The name animation hands over to the result, so both must look exactly the same.
+@mixin frosted-glass {
+    background-color: color-mix(in srgb, var(--color-bg) 45%, transparent);
+    backdrop-filter: blur(14px) saturate(1.2);
+    -webkit-backdrop-filter: blur(14px) saturate(1.2);
+}

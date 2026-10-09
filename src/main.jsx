@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client'
 import axios from 'axios'
 import App from './App.jsx'
 import { installDemoApi, DEMO_USER } from './demo/demoApi.js'
+import { installUiSounds } from './sound/mysticSound.js'
 
 const DEMO = import.meta.env.VITE_DEMO_MODE === 'true'
 if (DEMO) installDemoApi(axios)
+installUiSounds()
 
 const demoBanner = {
   position: 'fixed', left: '50%', bottom: 12, transform: 'translateX(-50%)', zIndex: 1000,

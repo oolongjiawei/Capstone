@@ -103,6 +103,9 @@ $brand-font-size: clamp(3rem, -0.571rem + 17.857vw, 8rem);
         &.is-open span:nth-child(3) {
             transform: translateY(-1rem) rotate(-45deg);
         }
+        &.is-open {
+            z-index: 1002; // stays sharp above the frosted menu backdrop so it can close it
+        }
         @include mid {
             display: none;
         }
@@ -116,13 +119,56 @@ $brand-font-size: clamp(3rem, -0.571rem + 17.857vw, 8rem);
         flex: 1;
         padding: 1.5 2rem;
         padding-top: 2rem;
+        // mobile: a popup over the page, which is frosted behind it
         &.is-open {
             display: flex;
+            align-items: center;
+            position: fixed;
+            inset: 0;
+            z-index: 1001; // above the demo banner
+            padding: 2rem;
+            @include frosted-glass;
+            animation: menu-backdrop-in 0.2s ease-out;
         }
         @include mid{
-            display: flex;
-            padding: 1.5 2rem;
-            flex-direction: row;
+            &,
+            &.is-open {
+                display: flex;
+                position: static;
+                padding: 1.5 2rem;
+                flex-direction: row;
+                background-color: transparent;
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                animation: none;
+            }
+        }
+    }
+    &__menu-card {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        width: min(32rem, 100%);
+        padding: 2.4rem;
+        border-radius: 2.4rem;
+        background-color: color-mix(in srgb, var(--color-bg) 85%, transparent);
+        box-shadow: $box-shadow;
+        animation: menu-card-in 0.25s ease-out;
+        .nav-link {
+            margin: 0;
+            padding: 1.2rem 2rem;
+            font-size: 2rem;
+        }
+        // the sound toggle reads like the links: a full-width pill in the menu
+        .header__sound {
+            width: 100%;
+            justify-content: center;
+            background-color: var(--color-btn-secondary);
+            box-shadow: $btn-shadow;
+        }
+        // wider screens: the links sit straight in the nav row
+        @include mid {
+            display: contents;
         }
     }
     
@@ -188,5 +234,29 @@ $brand-font-size: clamp(3rem, -0.571rem + 17.857vw, 8rem);
     }
     @include tablet {
         font-size: clamp(1.6rem, -0.4rem + 10vw, 3rem);
+    }
+}
+@keyframes menu-backdrop-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes menu-card-in {
+    from { opacity: 0; transform: scale(0.94) translateY(-1rem); }
+    to { opacity: 1; transform: none; }
+}
+
+// sound toggle in the nav: gold like the links; a small round button at the end of the row
+.header__sound {
+    align-self: center;
+    color: var(--color-font-hover);
+    &:hover {
+        color: var(--color-font-hover);
+    }
+    @include mid {
+        .header__menu-card & {
+            width: 4rem;
+            background-color: var(--color-btn-secondary);
+        }
     }
 }

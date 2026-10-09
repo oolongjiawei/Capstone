@@ -37,4 +37,13 @@
       }
     }
   }
-  
+
+  // wraps each result's text; the seep filter (result dialog) goes here
+  .bazi-chart__ink {
+    display: inline-block;
+    // the global span rule would shrink, grey and left-align it
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+    text-align: inherit;
+  }

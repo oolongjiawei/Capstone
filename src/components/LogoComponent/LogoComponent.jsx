@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import logo from '../../assets/images/logo.png'; 
 import './LogoComponent.scss'; 
+import { playThemeSwitch } from '../../sound/mysticSound';
 
 
 const LogoComponent = ({ onLogoClick }) => {
@@ -17,6 +18,7 @@ const LogoComponent = ({ onLogoClick }) => {
     setIsDarkMode(!isDarkMode);
     document.body.className = `${newMode}-mode`;
     localStorage.setItem('theme', newMode);
+    playThemeSwitch(newMode === 'dark');
     if (onLogoClick) {
       onLogoClick();
     }

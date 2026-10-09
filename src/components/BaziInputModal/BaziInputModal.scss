@@ -16,6 +16,53 @@ $wheel-visible-rows: 5;
       max-height: 92vh;
       overflow-y: auto;
     }
+    // .card centres its content; once that overflows, centring pushes the title above the
+    // scroll area where it can't be reached, so lay out from the top instead.
+    // (.card is re-emitted by every component's stylesheet, hence the extra class here)
+    &__modal.card {
+      justify-content: flex-start;
+    }
+    // keep a long title (e.g. "Edit <name>") clear of the close button
+    &__modal h1 {
+      padding: 0 4.4rem 1rem;
+    }
+    // sound on/off in the top-left corner, mirroring the close button
+    &__sound {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+    }
+    // close (x) in the top-right corner of the dialog
+    &__close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 4rem;
+      height: 4rem;
+      margin: 0;
+      padding: 0.8rem;
+      border: 0;
+      border-radius: 50%;
+      background-color: transparent;
+      box-shadow: none;
+      color: var(--color-font);
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2.4;
+        stroke-linecap: round;
+      }
+      &:hover {
+        background-color: var(--color-btn-secondary);
+        color: var(--color-text);
+        transform: none;
+      }
+      &:focus-visible {
+        outline: 0.3rem solid var(--color-btn);
+      }
+    }
     &__fields {
       display: flex;
       flex-direction: column;
@@ -44,6 +91,39 @@ $wheel-visible-rows: 5;
       }
       &:focus-visible {
         outline: 0.3rem solid var(--color-btn);
+      }
+    }
+    // name row: same pill as the picker rows, with a text field in place of the value
+    &__name {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 0.6rem 0.6rem 0.6rem 2rem;
+      border: $border-thick solid var(--color-border);
+      border-radius: $border-radious;
+      background-color: var(--color-surface);
+      box-shadow: $inner-shadow;
+      &:focus-within {
+        border-color: var(--color-border-hover);
+      }
+      &.invalid {
+        border-color: var(--color-red);
+      }
+    }
+    &__name-input {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+      padding: 0.6rem 1.4rem 0.6rem 0;
+      border: 0;
+      box-shadow: none;
+      background: transparent;
+      text-align: right;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: normal;
+      &:focus {
+        border: 0;
       }
     }
     &__field.is-open &__toggle {
@@ -230,8 +310,19 @@ $wheel-visible-rows: 5;
   align-items: center;
   gap: 1.2rem;
 
+  &__bezel {
+    width: min(26.4rem, 100%);
+    padding: 1.2rem;
+    border-radius: 50%;
+    background-color: var(--color-bg);
+    box-shadow: $box-shadow;
+  }
   &__face {
-    width: min(24rem, 100%);
+    display: block;
+    width: 100%;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    box-shadow: $inner-shadow;
     touch-action: none;
     cursor: grab;
     user-select: none;
@@ -240,13 +331,7 @@ $wheel-visible-rows: 5;
     }
     &:focus-visible {
       outline: 0.3rem solid var(--color-btn);
-      border-radius: 50%;
     }
-  }
-  &__dial {
-    fill: var(--color-surface);
-    stroke: var(--color-line);
-    stroke-width: 2;
   }
   &__tick {
     fill: var(--color-font);
@@ -261,21 +346,22 @@ $wheel-visible-rows: 5;
       font-weight: 800;
     }
   }
-  &__hand {
-    stroke: var(--color-btn);
-    stroke-width: 6;
-    stroke-linecap: round;
-  }
+  // hand, knob and hub colours, shaded from the theme's button and gold colours
+  &__stop--hand-light { stop-color: color-mix(in srgb, var(--color-btn) 55%, white); }
+  &__stop--hand { stop-color: var(--color-btn); }
+  &__stop--hand-dark { stop-color: color-mix(in srgb, var(--color-btn) 65%, black); }
+  &__stop--knob-light { stop-color: color-mix(in srgb, var(--color-btn-hover) 35%, white); }
+  &__stop--knob { stop-color: var(--color-btn-hover); }
+  &__stop--knob-dark { stop-color: color-mix(in srgb, var(--color-btn-hover) 70%, black); }
   &__knob {
-    fill: var(--color-btn-hover);
-    stroke: var(--color-btn);
-    stroke-width: 3;
+    stroke: color-mix(in srgb, var(--color-btn-hover) 55%, black);
+    stroke-width: 1;
   }
-  &__hub {
-    fill: var(--color-btn);
+  &__shadow {
+    flood-color: #000;
+    flood-opacity: 0.3;
   }
-  &__face.is-unset &__hand,
-  &__face.is-unset &__knob {
+  &__face.is-unset &__hand-group {
     opacity: 0.35;
   }
 
