@@ -3,7 +3,6 @@
 @use '../../styles/partials/global' as *;
 @use '../../styles/partials/breakpoints' as *;
 @use '../../styles/partials/font' as *;
-@use '../../styles/partials/typography' as *;
 
 .user-page {
     display:flex;
@@ -79,8 +78,9 @@
     &__seat {
         position: absolute; 
         transform-origin: 50% 50%;
-        top: 200px;
-        right: -28px;
+        // cat images share a 220x280 canvas with the feet at (110, 272)
+        top: 207px;
+        right: -6px;
         width: 250px;
         height: auto;
         object-fit: cover;

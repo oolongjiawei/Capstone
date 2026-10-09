@@ -1,6 +1,6 @@
 import './UserPage.scss';
 import { useState } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import BaziInputModal from '../../components/BaziInputModal/BaziInputModal';
 import BaziResultModal from '../../components/BaziResultModal/BaziResultModal';
 import axios from 'axios';
@@ -11,13 +11,15 @@ import Header from '../../components/Header/Header.jsx';
 
 
 const UserPage = () => {
+  const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [baziData, setBaziData] = useState(null); 
   const [isBaziPopupOpen, setIsBaziPopupOpen] = useState(false); 
-  const [currentCatImage, setCurrentCatImage] = useState(catBlack);
+  // Black cat in light mode, white cat in dark mode; LogoComponent owns the theme toggle
+  const [isDarkMode, setIsDarkMode] = useState(localStorage.getItem('theme') === 'dark');
 
   const toggleCatImage = () => {
-    setCurrentCatImage(prevImage => prevImage === catBlack ? catWhite : catBlack);
+    setIsDarkMode(prev => !prev);
   };
   
   
@@ -68,7 +70,7 @@ const UserPage = () => {
         return;
   }
     try {
-      const response = await axios.post('http://localhost:8080/api/fortune/bazi', {
+      await axios.post('http://localhost:8080/api/fortune/bazi', {
         birthYear: baziData.birth_year,  
         birthMonth: baziData.birth_month,
         birthDay: baziData.birth_day,
@@ -76,10 +78,11 @@ const UserPage = () => {
         save: true, 
         userId: userId,
       });
-      console.log('Bazi data saved successfully:', response.data);
       setIsBaziPopupOpen(false); 
+      navigate(`/user/${userId}/personal-bazi`, { state: { justSaved: true } });
     } catch (error) {
       console.error('Error saving Bazi:', error.response ? error.response.data : error.message);
+      alert('There was an error saving your Bazi. Please try again.');
     }
   };
 
@@ -101,7 +104,7 @@ const UserPage = () => {
               <div className="cat">
                 <div className="cat__all" onClick={handleOpenModal}>
 
-                    <img className='cat__own' src={currentCatImage} alt="fortune cat" />
+                    <img className='cat__own' src={isDarkMode ? catWhite : catBlack} alt="fortune cat" />
 
                     <div className="cat__seat">
                       <img src={catPat} alt="cat seat pat" />

@@ -3,77 +3,104 @@
 @use '../../styles/partials/global' as *;
 @use '../../styles/partials/breakpoints' as *;
 @use '../../styles/partials/font' as *;
-@use '../../styles/partials/typography' as *;
-
-
 
 .default-cookie {
-  &__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
 
-    width: 100%;
-    display: flex;
-   flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
+  &__title {
     text-align: center;
-
   }
-  &__image {
 
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform: rotate(120deg);
-    width: 15rem;
-    height: 15rem;
-    cursor: pointer;
-    transition: filter 0.3s ease;
-  
-    &.greyscale {
-      filter: grayscale(100%);
-      // cursor: not-allowed;
-    }
-    &:hover {
-      transform: scale(1.02);
-      transform: rotate(130deg);
-    }
-  }
-  &--wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 18rem;
-    width: 18rem;
+  // the cookie itself is the main button
+  &__wrap {
+    width: 20rem;
+    height: 20rem;
+    margin: 0;
+    padding: 0;
     border-radius: 50%;
-    background-color: rgb(255, 255, 255);
-    box-shadow: $inner-shadow;
+    border: $border-thick solid var(--color-border);
+    background-color: var(--color-surface);
+    box-shadow: $inner-shadow, $box-shadow;
+    letter-spacing: normal;
+    &:hover {
+      background-color: var(--color-surface);
+      transform: none;
+    }
+    &:not(:disabled):hover .default-cookie__image {
+      animation: cookie-wiggle 0.5s ease-in-out infinite;
+    }
+    // an opened cookie isn't clickable; use the buttons below it
+    &:disabled {
+      cursor: default;
+    }
+    &:focus-visible {
+      outline: 0.3rem solid var(--color-btn);
+      outline-offset: 0.4rem;
+    }
+  }
 
+  &__image {
+    width: 13rem;
+    transform: rotate(120deg);
+    transition: transform 0.3s ease;
   }
-  &__label {
-    padding: 1rem 4rem;
-    background-color: rgb(238, 231, 168);
-    margin-top: 10px;
-    font-size: 16px;
-    color: #333;
-    border-radius: 2rem 0;
+  &__wrap.is-open &__image {
+    width: 16rem;
+    transform: none;
   }
+
+  // the paper slip that comes out of the cookie (same look as the collected slips)
+  &__slip {
+    width: 100%;
+    padding: 1.6rem 2.4rem;
+    background-color: var(--color-paper);
+    border: 1px solid var(--color-paper-line);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--color-paper-text);
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem);
+    line-height: 1.4;
+    animation: slip-in 0.35s ease-out;
+  }
+
   &__buttons {
     display: flex;
-    gap:1rem;
+    gap: 1.2rem;
     width: 100%;
-    padding: 1rem;
+    button {
+      flex: 1;
+      margin-top: 0;
+      letter-spacing: normal;
+      font-size: clamp(1.4rem, 1.2rem + 1vw, 1.8rem);
+    }
   }
-  &__button {
-    &-save {
 
-      display: flex;
-      flex: 1;
-    }
-    &-cancel {
-      display: flex;
-      flex: 1;
-    }
+  &__button-again {
+    background-color: var(--color-btn-secondary);
+    color: var(--color-accent-text);
   }
+
+  &__button-save:disabled {
+    cursor: default;
+    opacity: 0.6;
+    transform: none;
+    background-color: var(--color-btn);
+    color: var(--color-btn-font);
   }
+}
+
+@keyframes cookie-wiggle {
+  0%, 100% { rotate: -3deg; }
+  50% { rotate: 3deg; }
+}
+
+@keyframes slip-in {
+  from { opacity: 0; transform: translateY(-1rem); }
+  to { opacity: 1; transform: none; }
+}

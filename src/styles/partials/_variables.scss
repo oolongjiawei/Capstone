@@ -16,23 +16,23 @@
   --color-header-dark: #330c48;
 
   --color-font-light: #7a7a7a;
-  --color-font-dark: #b0b0b0;
+  --color-font-dark: #c4c0d0;
   
 
   --color-font-hover-light: #decc2e;
-  --color-font-hover-dark: #ece9e2;
+  --color-font-hover-dark: #e3d07c;
 
   --color-bg-light: #ecf0f3;
-  --color-bg-dark: #0d0003;
+  --color-bg-dark: #17161d;
 
   --color-hover-light: #e3d770;
   --color-hover-dark: #d4c35a;
 
   --color-btn-font-light: #ffffff;
-  --color-btn-font-dark: #404987;
+  --color-btn-font-dark: #f5f3fb;
 
   --color-btn-light: #586081;
-  --color-btn-dark:  #77709f;
+  --color-btn-dark: #6c66a8;
 
   --color-btn-hover-light: #e3d770;
   --color-btn-hover-dark: #e3d770;
@@ -41,28 +41,70 @@
   --color-btn-active-dark: #decc2e;
 
   --color-border-light: #ecf0f3;
-  --color-border-dark: #ffffff;
+  --color-border-dark: #34313f;
 
   --color-border-hover-light: #e3d770;
   --color-border-hover-dark: #e3d770;
 
   --color-shadow-light: #cbced1;
-  --color-shadow-dark: rgb(219, 219, 219);
+  --color-shadow-dark: #0b0a0f;
 
   --color-obj-cat-rimLight-light: #ffe9aed4;
-  --color-obj-cat-rimLight-dark: #ffffff;
+  --color-obj-cat-rimLight-dark: #e3d07c99;
 
   --color-logo-light: #e7dd83;
-  --color-logo-dark: #f3efe8;
+  --color-logo-dark: #e3d07c;
 
   --color-logo-shadow-light: #e7e6d4;
-  --color-logo-shadow-dark: #525252;
+  --color-logo-shadow-dark: #2a2733;
 
   --color-font-placeholder-light: #bcbaba;
-  --color-font-placeholder-dark: #bcbaba;
+  --color-font-placeholder-dark: #6f6b7c;
 
   --color-logo-rim-light: #fffffff9;
-  --color-logo-rim-dark: #252525;
+  --color-logo-rim-dark: #0b0a0f;
+
+  // tokens added for dark mode; the -light values match what light mode already showed
+  --color-highlight-light: #ffffff;
+  --color-highlight-dark: #2b2935;
+
+  --color-btn-hover-font-light: #7a7a7a;
+  --color-btn-hover-font-dark: #17161d;
+
+  --color-heading-light: #333333;
+  --color-heading-dark: #e4e1ec;
+
+  --color-surface-light: #ffffff;
+  --color-surface-dark: #211f29;
+
+  --color-surface-alt-light: #f5f5f5;
+  --color-surface-alt-dark: #2b2835;
+
+  --color-line-light: #cccccc;
+  --color-line-dark: #3b3846;
+
+  --color-text-light: #000000;
+  --color-text-dark: #e4e1ec;
+
+  // purple text on the page background (outline buttons, notices)
+  --color-accent-text-light: #586081;
+  --color-accent-text-dark: #a59fdc;
+
+  // secondary buttons and nav pills; in dark mode a step lighter than the page so they read as buttons
+  --color-btn-secondary-light: #ecf0f3;
+  --color-btn-secondary-dark: #24222d;
+
+  // fortune slips: white paper in light mode, ink paper in dark mode
+  --color-paper-light: #ffffff;
+  --color-paper-dark: #24222d;
+  --color-paper-hover-light: #f9f9f9;
+  --color-paper-hover-dark: #2a2834;
+  --color-paper-line-light: #cccccc;
+  --color-paper-line-dark: #3d3a48;
+  --color-paper-text-light: #333333;
+  --color-paper-text-dark: #e4e1ec;
+  --color-paper-stamp-light: rgba(26, 121, 223, 0.281);
+  --color-paper-stamp-dark: rgba(227, 208, 124, 0.55);
 }
 
 
@@ -87,6 +129,21 @@ body.light-mode {
   --color-font-placeholder: var(--color-font-placeholder-light);
   --color-logo-rim: var(--color-logo-rim-light);
   --color-logo-shadow: var(--color-logo-shadow-light);
+  --color-highlight: var(--color-highlight-light);
+  --color-btn-hover-font: var(--color-btn-hover-font-light);
+  --color-heading: var(--color-heading-light);
+  --color-surface: var(--color-surface-light);
+  --color-surface-alt: var(--color-surface-alt-light);
+  --color-line: var(--color-line-light);
+  --color-text: var(--color-text-light);
+  --color-accent-text: var(--color-accent-text-light);
+  --color-btn-secondary: var(--color-btn-secondary-light);
+  --color-paper: var(--color-paper-light);
+  --color-paper-hover: var(--color-paper-hover-light);
+  --color-paper-line: var(--color-paper-line-light);
+  --color-paper-text: var(--color-paper-text-light);
+  --color-paper-stamp: var(--color-paper-stamp-light);
+  --paper-icon-opacity: 1;
   
 
 }
@@ -112,6 +169,21 @@ body.dark-mode {
   --color-font-placeholder: var(--color-font-placeholder-dark);
   --color-logo-rim: var(--color-logo-rim-dark);
   --color-logo-shadow: var(--color-logo-shadow-dark);
+  --color-highlight: var(--color-highlight-dark);
+  --color-btn-hover-font: var(--color-btn-hover-font-dark);
+  --color-heading: var(--color-heading-dark);
+  --color-surface: var(--color-surface-dark);
+  --color-surface-alt: var(--color-surface-alt-dark);
+  --color-line: var(--color-line-dark);
+  --color-text: var(--color-text-dark);
+  --color-accent-text: var(--color-accent-text-dark);
+  --color-btn-secondary: var(--color-btn-secondary-dark);
+  --color-paper: var(--color-paper-dark);
+  --color-paper-hover: var(--color-paper-hover-dark);
+  --color-paper-line: var(--color-paper-line-dark);
+  --color-paper-text: var(--color-paper-text-dark);
+  --color-paper-stamp: var(--color-paper-stamp-dark);
+  --paper-icon-opacity: 0.35;
   
 
 }
@@ -152,17 +224,16 @@ $divider: 1px solid rgba(var(--color-font), .4);
 $border-thick: .5rem;
 $border-radious: 5rem;
 
-$box-shadow: 5px 5px 5px var(--color-shadow), -5px -5px 5px var(--color-white);
+$box-shadow: 5px 5px 5px var(--color-shadow), -5px -5px 5px var(--color-highlight);
 // $box-shadow-dark: 5px 5px 5px var(--color-box-shadow-dark), -5px -5px 5px var(--color-box-shadow-light);
-$btn-shadow: 2px 2px 5px var(--color-shadow), -2px -2px 5px var(--color-white);
-$inner-shadow: inset 2px 2px 4px var(--color-shadow), inset -2px -2px 4px var(--color-white);
+$btn-shadow: 2px 2px 5px var(--color-shadow), -2px -2px 5px var(--color-highlight);
+$inner-shadow: inset 2px 2px 4px var(--color-shadow), inset -2px -2px 4px var(--color-highlight);
 $logo-shadow: 5px 5px 5px  var(--color-logo-rim), -5px -5px 5px var(--color-logo-shadow);
 $link-btn-shadow: 5px 5px 5px  var(--color-bg-dark), -5px -5px 5px var(--color-logo-shadow);
 
 
 //font
 $bazi: 'LongCang';
-$fortune-tell: 'Playwrite Australia NSW';
 
 
 

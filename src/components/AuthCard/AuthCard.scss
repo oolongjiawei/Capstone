@@ -3,7 +3,6 @@
 @use '../../styles/partials/global' as *;
 @use '../../styles/partials/breakpoints' as *;
 @use '../../styles/partials/font' as *;
-@use '../../styles/partials/typography' as *;
 
 
 
@@ -45,6 +44,10 @@
   }
   &__input {
     padding: 1rem 1rem 1rem 4rem;
+  }
+  &__demo-button {
+    background-color: var(--color-btn-secondary);
+    color: var(--color-accent-text);
   }
   &__card {
     background-color: var(--color-bg);

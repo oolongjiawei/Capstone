@@ -9,8 +9,8 @@ if (DEMO) installDemoApi(axios)
 
 const demoBanner = {
   position: 'fixed', left: '50%', bottom: 12, transform: 'translateX(-50%)', zIndex: 1000,
-  background: 'rgba(20, 16, 12, 0.88)', color: '#f5ead7', padding: '8px 14px', borderRadius: 999,
-  font: '13px/1.4 system-ui, sans-serif', whiteSpace: 'nowrap', maxWidth: 'calc(100vw - 24px)', overflow: 'hidden', textOverflow: 'ellipsis',
+  background: 'rgba(20, 16, 12, 0.88)', color: '#f5ead7', padding: '8px 14px', borderRadius: 16,
+  font: '13px/1.4 system-ui, sans-serif', textAlign: 'center', width: 'max-content', maxWidth: 'calc(100vw - 24px)',
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(

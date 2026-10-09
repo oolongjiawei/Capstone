@@ -1,70 +1,101 @@
 import { useState } from 'react';
 import Modal from 'react-modal';
 import './BaziInputModal.scss';
+import YearWheel from './YearWheel';
+import MonthGrid from './MonthGrid';
+import DayCalendar from './DayCalendar';
+import HourClock from './HourClock';
+import { MONTH_NAMES, daysInMonth, formatHour } from './pickerUtils';
 
 Modal.setAppElement('#root');  // For accessibility considerations
 
+const MIN_YEAR = 1950;
+const FIELDS = ['year', 'month', 'day', 'hour'];
+
+// One row of the form: tap it to expand its picker underneath
+const PickerField = ({ name, label, display, isOpen, isInvalid, onToggle, children }) => (
+  <div className={`bazi-input__field ${isOpen ? 'is-open' : ''} ${isInvalid ? 'invalid' : ''}`}>
+    <button
+      type="button"
+      className="bazi-input__toggle"
+      aria-expanded={isOpen}
+      aria-controls={`bazi-${name}-panel`}
+      onClick={onToggle}
+    >
+      <span className="bazi-input__label">{label}</span>
+      <span className={`bazi-input__value ${display ? '' : 'is-empty'}`}>{display ?? 'Select'}</span>
+    </button>
+    {isOpen && (
+      <div id={`bazi-${name}-panel`} className="bazi-input__panel">
+        {children}
+      </div>
+    )}
+  </div>
+);
+
 const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
-  const [year, setYear] = useState('');
-  const [month, setMonth] = useState('');
-  const [day, setDay] = useState('');
-  const [hour, setHour] = useState('');
+  const [year, setYear] = useState(null);
+  const [month, setMonth] = useState(null);
+  const [day, setDay] = useState(null);
+  const [hour, setHour] = useState(null);
+  const [openField, setOpenField] = useState('year');
   const [error, setError] = useState('');
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  const [touchedYear, setTouchedYear] = useState(false);
-  const [touchedMonth, setTouchedMonth] = useState(false);
-  const [touchedDay, setTouchedDay] = useState(false);
-  const [touchedHour, setTouchedHour] = useState(false);
-
   const currentYear = new Date().getFullYear();
+  const values = { year, month, day, hour };
 
-  const handleYearScroll = () => {
-    if (year === '') { 
-      setYear(1980); 
-    }
-  };
-  const handleMonthScroll = () => {
-    if (month === '') { 
-      setMonth(6); 
-    }
-  };
-  const handleDayScroll = () => {
-    if (day === '') { 
-      setDay(15); 
-    }
-  };
-  const handleHourScroll = () => {
-    if (hour === '') { 
-      setHour(12); 
-    }
+  const openNext = (field) => setOpenField(FIELDS[FIELDS.indexOf(field) + 1] ?? null);
+  const toggle = (field) => setOpenField(openField === field ? null : field);
+
+  // Drop a day that no longer exists in the newly chosen month (e.g. 31 -> February)
+  const keepValidDay = (y, m) => {
+    if (day && m && day > daysInMonth(y ?? 2000, m)) setDay(null);
   };
 
-  const validateInput = (value, min, max) => {
-    return value >= min && value <= max;
+  const handleYearChange = (y) => {
+    setYear(y);
+    keepValidDay(y, month);
+  };
+  const handleYearDone = (y) => {
+    handleYearChange(y);
+    openNext('year');
+  };
+  const handleMonth = (m) => {
+    setMonth(m);
+    keepValidDay(year, m);
+    openNext('month');
+  };
+  const handleDay = (y, m, d) => {
+    setYear(y);
+    setMonth(m);
+    setDay(d);
+    openNext('day');
   };
 
   const handleSubmit = () => {
-    setHasSubmitted(true); // Set flag to indicate submission attempt
-
-    if (
-      !validateInput(year, 1950, currentYear) ||
-      !validateInput(month, 1, 12) ||
-      !validateInput(day, 1, 31) ||
-      !validateInput(hour, 0, 23)
-    ) {
-      setError('Please enter valid values within the allowed range.');
+    setHasSubmitted(true);
+    const missing = FIELDS.find((field) => values[field] == null);
+    if (missing) {
+      setError('Please choose your birth year, month, day and hour.');
+      setOpenField(missing);
       return;
     }
 
     setError('');
     setTimeout(() => {
-      onSubmit({ year, month, day, hour });
+      // the API takes whole hours; flooring keeps the same 时辰 since those change on whole odd hours
+      onSubmit({ year, month, day, hour: Math.floor(hour) });
       onClose();
     }, 300);
   };
 
-  const isRequired = hasSubmitted; // Only set required after form submission attempt
+  const fieldProps = (name) => ({
+    name,
+    isOpen: openField === name,
+    isInvalid: hasSubmitted && values[name] == null,
+    onToggle: () => toggle(name),
+  });
 
   return (
     <Modal
@@ -78,66 +109,21 @@ const BaziInputModal = ({ isOpen, onClose, onSubmit }) => {
       <h1>Enter Your Information</h1>
       <div className='bazi-input__popup'>
         <div className='bazi-input__fields'>
-          <div className={`bazi-input__field ${hasSubmitted && !validateInput(year, 1950, currentYear) ? 'invalid' : ''}`}>
-            <label className="bazi-input__label">Birth Year:</label>
-            <input
-              className='bazi-input__detail'
-              type="number" //scroller
-              placeholder="Enter Year (1950 - Present)"
-              value={year}
-              onChange={(e) => setYear(e.target.value)}
-              onWheel={handleYearScroll} 
-              onBlur={() => setTouchedYear(true)}
-              min="1950"
-              max={currentYear}
-              required={isRequired}
-            />
-          </div>
-          <div className={`bazi-input__field ${hasSubmitted && !validateInput(month, 1, 12) ? 'invalid' : ''}`}>
-            <label className="bazi-input__label">Birth Month:</label>
-            <input
-              className='bazi-input__detail'
-              type="number"
-              placeholder="Enter Month (1 - 12)"
-              value={month}
-              onChange={(e) => setMonth(e.target.value)}
-              onWheel={handleMonthScroll} 
-              onBlur={() => setTouchedMonth(true)}
-              min="1"
-              max="12"
-              required={isRequired}
-            />
-          </div>
-          <div className={`bazi-input__field ${hasSubmitted && !validateInput(day, 1, 31) ? 'invalid' : ''}`}>
-            <label className="bazi-input__label">Birth Day:</label>
-            <input
-              className='bazi-input__detail'
-              type="number"
-              placeholder="Enter Day (1 - 31)"
-              value={day}
-              onChange={(e) => setDay(e.target.value)}
-              onWheel={handleDayScroll} 
-              onBlur={() => setTouchedDay(true)}
-              min="1"
-              max="31"
-              required={isRequired}
-            />
-          </div>
-          <div className={`bazi-input__field ${hasSubmitted && !validateInput(hour, 0, 23) ? 'invalid' : ''}`}>
-            <label className="bazi-input__label">Birth Hour:</label>
-            <input
-              className='bazi-input__detail'
-              type="number"
-              placeholder="Enter Hour (0 - 23)"
-              value={hour}
-              onChange={(e) => setHour(e.target.value)}
-              onWheel={handleHourScroll} 
-              onBlur={() => setTouchedHour(true)}
-              min="0"
-              max="23"
-              required={isRequired}
-            />
-          </div>
+          <PickerField {...fieldProps('year')} label="Birth Year" display={year}>
+            <YearWheel min={MIN_YEAR} max={currentYear} value={year} onChange={handleYearChange} onDone={handleYearDone} />
+          </PickerField>
+
+          <PickerField {...fieldProps('month')} label="Birth Month" display={month && MONTH_NAMES[month - 1]}>
+            <MonthGrid value={month} onSelect={handleMonth} />
+          </PickerField>
+
+          <PickerField {...fieldProps('day')} label="Birth Day" display={day}>
+            <DayCalendar year={year} month={month} day={day} minYear={MIN_YEAR} onSelect={handleDay} />
+          </PickerField>
+
+          <PickerField {...fieldProps('hour')} label="Birth Hour" display={hour != null ? formatHour(hour) : null}>
+            <HourClock value={hour} onChange={setHour} />
+          </PickerField>
         </div>
         {error && (
           <small className="error-message">

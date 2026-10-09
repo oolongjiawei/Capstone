@@ -3,24 +3,295 @@
 @use '../../styles/partials/global' as *;
 @use '../../styles/partials/breakpoints' as *;
 @use '../../styles/partials/font' as *;
-@use '../../styles/partials/typography' as *;
 
+// must match ITEM_HEIGHT in YearWheel.jsx
+$wheel-item-height: 40px;
+$wheel-visible-rows: 5;
 
 .bazi-input {
     @include popup-styles;
-    &__detail{
-      position: relative;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: right;
+    &__modal {
+      // the open pickers make the form taller than a phone screen
+      max-width: calc(100vw - 2.4rem);
+      max-height: 92vh;
+      overflow-y: auto;
     }
     &__fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
       width: 100%;
-      // max-width: 32rem;
       margin: auto;
+    }
+
+    // the tappable row showing the label and the chosen value
+    &__toggle {
+      justify-content: space-between;
+      height: auto;
+      margin-top: 0;
+      padding: 1.2rem 2rem;
+      border-radius: $border-radious;
+      background-color: var(--color-surface);
+      color: var(--color-text);
+      box-shadow: $inner-shadow;
+      letter-spacing: normal;
+      font-weight: 500;
+      &:hover {
+        background-color: var(--color-surface);
+        color: var(--color-text);
+        border-color: var(--color-border-hover);
+        transform: none;
+      }
+      &:focus-visible {
+        outline: 0.3rem solid var(--color-btn);
+      }
+    }
+    &__field.is-open &__toggle {
+      border-color: var(--color-border-hover);
+    }
+    &__field.invalid &__toggle {
+      border-color: var(--color-red);
+    }
+    &__label,
+    &__value {
+      line-height: 1.2;
+    }
+    &__label {
+      // undo the popup-styles label offset; the label now sits inside the row
+      margin-top: 0;
+      padding-left: 0;
+      color: var(--color-text);
+      font-size: 1.6rem;
+    }
+    &__value {
+      color: var(--color-text);
+      font-size: 1.8rem;
+      font-weight: 700;
+      &.is-empty {
+        color: var(--color-font-placeholder);
+        font-weight: 500;
+      }
+    }
+
+    // expanded picker under its row
+    &__panel {
+      margin-top: 0.8rem;
+      padding: 1.6rem;
+      border-radius: 2rem;
+      background-color: var(--color-bg);
+      box-shadow: $inner-shadow;
+      animation: bazi-panel-in 0.2s ease-out;
+    }
+}
+
+@keyframes bazi-panel-in {
+  from { opacity: 0; transform: translateY(-0.6rem); }
+  to { opacity: 1; transform: none; }
+}
+
+// small choice buttons shared by all pickers (months, days, AM/PM, Done)
+.bazi-option {
+  height: 4rem;
+  margin-top: 0;
+  padding: 0;
+  border-width: 0.2rem;
+  border-radius: 1.2rem;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  box-shadow: $btn-shadow;
+  letter-spacing: normal;
+  font-size: 1.5rem;
+  font-weight: 600;
+  &:hover {
+    transform: none;
+    border-color: var(--color-border-hover);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+  }
+  &.is-selected,
+  &.is-selected:hover {
+    background-color: var(--color-btn);
+    color: var(--color-btn-font);
+  }
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+    border-color: var(--color-border);
+  }
+  &:focus-visible {
+    outline: 0.3rem solid var(--color-btn);
+  }
+}
+
+// ---- year wheel
+.bazi-wheel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
+
+  // fixed band marking the selected row
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: $wheel-item-height * 2;
+    height: $wheel-item-height;
+    border-radius: 1.2rem;
+    background-color: var(--color-surface);
+    box-shadow: $btn-shadow;
+    pointer-events: none;
+  }
+
+  &__list {
+    position: relative;
+    width: 100%;
+    height: $wheel-item-height * $wheel-visible-rows;
+    padding: ($wheel-item-height * 2) 0;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    mask-image: linear-gradient(transparent, #000 35%, #000 65%, transparent);
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &:focus-visible {
+      outline: 0.3rem solid var(--color-btn);
+      border-radius: 1.2rem;
     }
   }
 
-  
+  &__item {
+    height: $wheel-item-height;
+    line-height: $wheel-item-height;
+    scroll-snap-align: center;
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--color-font);
+    cursor: pointer;
+    transition: font-size 0.15s, color 0.15s;
+    &.is-selected {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+  }
+
+  &__done {
+    width: 12rem;
+  }
+}
+
+// ---- month grid
+.bazi-months {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+// ---- day calendar
+.bazi-calendar {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+  }
+  &__nav {
+    width: 4rem;
+    font-size: 2.2rem;
+  }
+  &__title {
+    color: var(--color-text);
+    font-weight: 700;
+  }
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.6rem;
+  }
+  &__weekday {
+    text-align: center;
+    color: var(--color-font);
+    font-size: 1.3rem;
+  }
+  &__day {
+    height: 3.6rem;
+    font-size: 1.4rem;
+  }
+}
+
+// ---- hour clock
+.bazi-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+
+  &__face {
+    width: min(24rem, 100%);
+    touch-action: none;
+    cursor: grab;
+    user-select: none;
+    &:active {
+      cursor: grabbing;
+    }
+    &:focus-visible {
+      outline: 0.3rem solid var(--color-btn);
+      border-radius: 50%;
+    }
+  }
+  &__dial {
+    fill: var(--color-surface);
+    stroke: var(--color-line);
+    stroke-width: 2;
+  }
+  &__tick {
+    fill: var(--color-font);
+    opacity: 0.6;
+  }
+  &__number {
+    fill: var(--color-font);
+    font-size: 17px;
+    font-weight: 600;
+    &.is-selected {
+      fill: var(--color-text);
+      font-weight: 800;
+    }
+  }
+  &__hand {
+    stroke: var(--color-btn);
+    stroke-width: 6;
+    stroke-linecap: round;
+  }
+  &__knob {
+    fill: var(--color-btn-hover);
+    stroke: var(--color-btn);
+    stroke-width: 3;
+  }
+  &__hub {
+    fill: var(--color-btn);
+  }
+  &__face.is-unset &__hand,
+  &__face.is-unset &__knob {
+    opacity: 0.35;
+  }
+
+  &__meridiem {
+    display: flex;
+    gap: 1rem;
+    button {
+      width: 8rem;
+    }
+  }
+  &__readout {
+    color: var(--color-text);
+    text-align: center;
+  }
+  &__branch {
+    color: var(--color-text);
+    font-size: 2rem;
+  }
+}

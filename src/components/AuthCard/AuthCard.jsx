@@ -2,7 +2,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./AuthCard.scss";
 import { useNavigate } from "react-router-dom";
-import LogoComponent from '../LogoComponent/LogoComponent'; 
+import LogoComponent from '../LogoComponent/LogoComponent';
+import { DEMO_USER } from "../../demo/demoApi.js";
+
+const DEMO = import.meta.env.VITE_DEMO_MODE === "true";
 
 const AuthCard = ({ type }) => {
   const navigate = useNavigate();
@@ -63,22 +66,16 @@ const AuthCard = ({ type }) => {
       return;
     }
 
+    await authenticate({ email, password, username: isRegister ? username : undefined });
+  };
+
+  const authenticate = async (credentials) => {
     try {
       const url = isRegister ? "http://localhost:8080/api/auth/register" : "http://localhost:8080/api/auth/login";
-      const response = await axios.post(url, { email, password, username: isRegister ? username : undefined });
-      console.log(`${isRegister ? "Registration" : "Login"} successful`, response.data);
+      const response = await axios.post(url, credentials);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem('userId', response.data.userId);
       localStorage.setItem('username', response.data.username);
-
-      console.log('Login successful, username:', response.data.username);
-      setTimeout(() => {
-        if (response.data.userId) {
-          navigate(`/user/${response.data.userId}`);
-        } else {
-          console.error("User ID is missing in the response");
-        }
-      }, 500);
 
       if (response.data.userId) {
         navigate(`/user/${response.data.userId}`);
@@ -89,6 +86,9 @@ const AuthCard = ({ type }) => {
       setError("An error occurred !!");
     }
   };
+
+  // One-click sign-in for the Vercel demo, so visitors don't have to type the demo credentials
+  const handleTryDemo = () => authenticate({ email: DEMO_USER.email, password: DEMO_USER.password });
 
   return (
     // <div className="auth__container">
@@ -153,6 +153,11 @@ const AuthCard = ({ type }) => {
             </div>
           )}
           <button type="submit">{isRegister ? "Sign Up" : "Login"}</button>
+          {DEMO && !isRegister && (
+            <button type="button" className="auth__demo-button" onClick={handleTryDemo}>
+              Try the Demo
+            </button>
+          )}
         </form>
         <div className="signup-or-login__link">
           {isRegister ? (
